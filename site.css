@@ -1302,6 +1302,43 @@ body { background:var(--paper); color:var(--ink) }
   .footer-grid>div:first-child { grid-column:auto }
   .footer-bottom { display:grid; gap:8px }
 }
+
+/* Supplied Banavasi heritage artwork: textured surfaces remain behind all copy and cards. */
+.masthead-home .brand-lockup { width:min(420px,calc(100vw - 80px)); padding:0; background:none; text-shadow:none }
+.masthead-home .temple-nameboard { display:block; width:100%; height:auto; object-fit:contain; filter:drop-shadow(0 3px 9px #10182b75) }
+.footer-identity { min-width:0 }
+.footer-nameboard { display:block; width:min(100%,390px); height:auto; object-fit:contain; margin:0 0 19px }
+.pattern-surface { position:relative; isolation:isolate; background-color:var(--ivory) }
+.pattern-surface::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:var(--heritage-pattern); background-size:var(--pattern-size,920px) auto; background-position:var(--pattern-position,center center); background-repeat:repeat; opacity:var(--pattern-opacity,.26) }
+.pattern-intro { --heritage-pattern:url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); --pattern-position:right 38%; --pattern-size:1000px; --pattern-opacity:.27 }
+.pattern-services { --heritage-pattern:url('/images/temple/backgrounds/navaranga-pillar-details.webp'); --pattern-position:center 42%; --pattern-size:860px; --pattern-opacity:.24 }
+.pattern-heritage { --heritage-pattern:url('/images/temple/backgrounds/lotus-rosette-pattern.webp'); --pattern-position:center center; --pattern-size:760px; --pattern-opacity:.26 }
+main.page-about .page-content { --heritage-pattern:url('/images/temple/backgrounds/navaranga-pillar-details.webp'); --pattern-position:right center; --pattern-size:850px; --pattern-opacity:.26 }
+main.page-history .page-content { --heritage-pattern:url('/images/temple/backgrounds/naga-inscription-and-shrine.webp'); --pattern-position:center center; --pattern-size:980px; --pattern-opacity:.27 }
+main.page-architecture .page-content { --heritage-pattern:url('/images/temple/backgrounds/carved-pillars-and-stone-cot.webp'); --pattern-position:right center; --pattern-size:980px; --pattern-opacity:.27 }
+main.page-festivals .page-content { --heritage-pattern:url('/images/temple/backgrounds/shankha-chakra-festive-ornament.webp'); --pattern-position:center center; --pattern-size:1000px; --pattern-opacity:.23 }
+main.page-deity .page-content { --heritage-pattern:url('/images/temple/backgrounds/nandi-pillared-hall.webp'); --pattern-position:center center; --pattern-size:920px; --pattern-opacity:.26 }
+main.page-news .page-content { --heritage-pattern:url('/images/temple/backgrounds/carved-elephants-and-entrance.webp'); --pattern-position:right center; --pattern-size:940px; --pattern-opacity:.24 }
+main.page-annadana .page-content { --heritage-pattern:url('/images/temple/backgrounds/floral-pillar-capital-ornament.webp'); --pattern-position:center center; --pattern-size:900px; --pattern-opacity:.25 }
+main.page-panchanga .page-content,main.page-gallery .page-content { --heritage-pattern:url('/images/temple/backgrounds/lotus-geometric-ornament.webp'); --pattern-position:center center; --pattern-size:940px; --pattern-opacity:.24 }
+main.page-visitor-information .page-content,main.page-contact .page-content { --heritage-pattern:url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); --pattern-position:right center; --pattern-size:900px; --pattern-opacity:.25 }
+main.page-videos .page-content { --heritage-pattern:url('/images/temple/backgrounds/lotus-rosette-pattern.webp'); --pattern-position:center center; --pattern-size:900px; --pattern-opacity:.24 }
+.footer { position:relative; isolation:isolate }
+.footer::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background-image:url('/images/temple/backgrounds/stepped-temple-shikhara.webp'); background-repeat:repeat; background-size:720px auto; background-position:center; opacity:.045; mix-blend-mode:screen }
+.footer>.wrap { position:relative; z-index:1 }
+@media(max-width:980px) and (min-width:769px) {
+  .masthead-home .brand-lockup { width:min(260px,calc(100vw - 620px)) }
+}
+@media(max-width:768px) {
+  .masthead-home .brandrow { align-items:flex-start }
+  .masthead-home .brand-lockup { width:min(280px,calc(100vw - 86px)); flex:none }
+  .footer-nameboard { width:min(100%,340px); margin-bottom:16px }
+  .pattern-surface::before { background-size:640px auto; background-position:center top; opacity:var(--pattern-opacity,.24) }
+  .footer::before { background-size:520px auto; background-position:right top; opacity:.035 }
+}
+@media(max-width:360px) {
+  .masthead-home .brand-lockup { width:min(245px,calc(100vw - 78px)) }
+}
 .credit-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 34px; margin-top:28px; border-top:1px solid var(--line) }
 .credit-list article { padding:15px 0; border-bottom:1px solid var(--line) }
 .credit-list h2 { font:600 17px/1.35 var(--serif); margin:0 0 6px }

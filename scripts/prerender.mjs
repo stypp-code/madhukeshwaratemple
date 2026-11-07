@@ -6,13 +6,23 @@ import vm from 'node:vm';
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const routeSlugs = ['index','about','history','deity','architecture','festivals','seva','donations','annadana','news','gallery','videos','panchanga','visitor-information','contact','privacy','terms','image-credits'];
 const source = (await readFile(join(root,'site.js'),'utf8')).replace("document.addEventListener('DOMContentLoaded',init);",'');
+const faviconTags = [
+  '<link rel="icon" type="image/svg+xml" href="/favicon.svg">',
+  '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">',
+  '<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">',
+  '<link rel="shortcut icon" href="/favicon.ico">',
+  '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
+  '<link rel="manifest" href="/site.webmanifest">',
+  '<meta name="theme-color" content="#650b08">'
+].join('\n  ');
 const context = vm.createContext({});
 vm.runInContext(`${source}\nglobalThis.renderTempleMarkup=(slug)=>{const key=slug==='index'?'home':slug;return header(key==='home')+(key==='home'?home():pageHtml(key,pages[key]))+footer()+'<div class="gallery-open" role="dialog" aria-modal="true" aria-label="Photograph viewer"><button type="button" aria-label="Close photograph">Close ✕</button><img alt=""></div>'};`, context);
 
 for (const slug of routeSlugs) {
   const file = join(root, slug === 'index' ? 'index.html' : `${slug}.html`);
   let html = await readFile(file,'utf8');
-  html = html.replace(/name="theme-color" content="[^"]+"/, 'name="theme-color" content="#283451"');
+  html = html.replace(/name="theme-color" content="[^"]+"/, 'name="theme-color" content="#650b08"');
+  if (!html.includes('href="/favicon.svg"')) html = html.replace('</head>',`  ${faviconTags}\n</head>`);
   const markup = context.renderTempleMarkup(slug);
   const rootStart = html.indexOf('<div id="site"');
   if (rootStart < 0) throw new Error(`Missing site mount in ${slug}.html`);
