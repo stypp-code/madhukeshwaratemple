@@ -1,0 +1,26 @@
+# Environment and secret material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+credentials.json
+service-account*.json
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+.next/
+coverage/
+.cache/
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
