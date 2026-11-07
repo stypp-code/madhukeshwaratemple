@@ -12,6 +12,7 @@ vm.runInContext(`${source}\nglobalThis.renderTempleMarkup=(slug)=>{const key=slu
 for (const slug of routeSlugs) {
   const file = join(root, slug === 'index' ? 'index.html' : `${slug}.html`);
   let html = await readFile(file,'utf8');
+  html = html.replace(/name="theme-color" content="[^"]+"/, 'name="theme-color" content="#283451"');
   const markup = context.renderTempleMarkup(slug);
   const rootStart = html.indexOf('<div id="site"');
   if (rootStart < 0) throw new Error(`Missing site mount in ${slug}.html`);

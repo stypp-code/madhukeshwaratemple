@@ -13,7 +13,7 @@ for (const route of routes) {
     if (/^(?:[a-z]+:|\/\/|#)/i.test(ref)) continue;
     const local = decodeURIComponent(ref.split(/[?#]/)[0]);
     if (!local) continue;
-    const localPath = local.startsWith('images/') ? resolve(root,'public',local) : resolve(root,local);
+    const localPath = local.startsWith('/') ? resolve(root,'public',local.slice(1)) : local.startsWith('images/') ? resolve(root,'public',local) : resolve(root,local);
     try { await access(localPath); }
     catch { failures.push(`${route}: broken local reference ${ref}`); }
   }
