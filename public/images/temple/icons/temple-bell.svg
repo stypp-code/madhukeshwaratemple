@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Temple bell">
+  <defs><linearGradient id="gold" x1="0" x2="1"><stop stop-color="#9b461f"/><stop offset=".45" stop-color="#f1bd55"/><stop offset="1" stop-color="#a44b25"/></linearGradient></defs>
+  <path d="M48 10c-6 0-9 5-9 10v9c-11 6-17 18-17 33h52c0-15-6-27-17-33v-9c0-5-3-10-9-10Z" fill="url(#gold)" stroke="#7a3018" stroke-width="3"/>
+  <path d="M18 62h60l-6 8H24l-6-8Zm18 9h24c0 8-5 13-12 13s-12-5-12-13Z" fill="#d69a3b" stroke="#7a3018" stroke-width="3"/>
+  <circle cx="48" cy="65" r="5" fill="#7a3018"/><path d="M42 20h12" stroke="#fff0bc" stroke-width="3" stroke-linecap="round"/>
+</svg>

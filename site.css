@@ -1344,3 +1344,85 @@ main.page-videos .page-content { --heritage-pattern:url('/images/temple/backgrou
 .credit-list h2 { font:600 17px/1.35 var(--serif); margin:0 0 6px }
 .credit-list p { margin:0; font-size:13px }
 @media(max-width:680px) { .credit-list { grid-template-columns:1fr } }
+
+/* Kannada-first typography and persistent language control */
+.announcement .wrap { justify-content:space-between; text-align:left; gap:12px; flex-wrap:wrap }
+.announcement-copy { flex:1 1 auto; min-width:0; text-align:left; line-height:1.45 }
+.language-switch { display:flex; align-items:center; gap:7px; flex:0 0 auto; white-space:nowrap; font-size:12px }
+.language-switch button { border:0; padding:3px 1px; color:inherit; background:transparent; font:inherit; cursor:pointer }
+.language-switch button[aria-pressed="true"] { color:#ffe4a1; text-decoration:underline; text-underline-offset:3px }
+html[lang="kn"] body,html[lang="kn"] button,html[lang="kn"] input,html[lang="kn"] textarea,html[lang="kn"] select { font-family:"Noto Sans Kannada","Noto Serif Kannada",sans-serif }
+html[lang="kn"] h1,html[lang="kn"] h2,html[lang="kn"] h3,html[lang="kn"] .section-title,html[lang="kn"] .nav a,html[lang="kn"] .nav .dropbtn { font-family:"Noto Serif Kannada","Noto Sans Kannada",serif; letter-spacing:0; line-height:1.55 }
+html[lang="kn"] p,html[lang="kn"] li,html[lang="kn"] .nav a,html[lang="kn"] .nav .dropbtn { line-height:1.8 }
+@media(max-width:768px) {
+  .announcement .wrap { min-height:0; padding-block:5px; gap:6px 10px; align-items:center }
+  .announcement-copy { flex:1 1 66%; font-size:10px; line-height:1.45 }
+  .language-switch { font-size:11px; gap:5px }
+  .masthead-home { top:50px }
+  html[lang="kn"] .nav a,html[lang="kn"] .nav .dropbtn { font-size:14px }
+}
+@media(max-width:390px) {
+  .announcement-copy { flex-basis:62%; font-size:9px }
+  .language-switch { font-size:10px }
+}
+
+/* Final heritage colour and navigation refinements. */
+:root {
+  --indigo:#5c2e1c;
+  --indigo-deep:#3f2015;
+  --ivory:#ffffff;
+  --paper:#ffffff;
+}
+body,.section.ivory,.pattern-surface,.heritage-section,.visit-section,.info-band { background:#ffffff }
+.dropdown,.form input,.form textarea,.service,.heritage-row,.gallery-grid figure,.news-column { background:#ffffff }
+.gallery-grid figure button,.photo-frame img,.event-photo,.page-content figure img { background:#ffffff }
+.gallery-zoom { background:#5c2e1ce8 }
+.gallery-open { background:#3f2015ed }
+.masthead,.masthead-home.is-sticky { background:var(--indigo) }
+.navrow,.dropdown,.masthead-home .navrow,.masthead-home.is-sticky .navrow { background:var(--indigo-deep) }
+.masthead-home .navrow { background:var(--saffron) }
+.masthead-home .nav>a:hover,.masthead-home .nav .dropbtn:hover,.masthead-home .nav a[aria-current=page] { color:var(--indigo-deep) }
+.masthead-home .nav .dropbtn span { color:var(--terracotta) }
+.hero-controls button { background:#3f2015d9 }
+.lingam-slide { background:#3f2015 }
+.lingam-slide img { object-fit:contain; object-position:center; filter:none; background:#3f2015 }
+
+html { scroll-padding-top:120px }
+.masthead:not(.masthead-home) { position:sticky; top:0; z-index:70; box-shadow:0 3px 12px #292b3024 }
+.masthead:not(.masthead-home) .brandrow { min-height:94px }
+.masthead:not(.masthead-home) .brand-lockup { display:block; width:min(390px,32vw); min-width:280px; padding:0 }
+.temple-nameboard { display:block; width:100%; height:auto; object-fit:contain }
+.masthead:not(.masthead-home) .navrow { position:absolute; top:18px; right:max(24px,calc((100% - 1240px)/2)); left:auto; width:auto; border:0; background:transparent; box-shadow:none }
+.masthead:not(.masthead-home) .nav { min-height:58px; width:auto; gap:0 }
+.masthead:not(.masthead-home) .nav>a,.masthead:not(.masthead-home) .nav .dropbtn { min-height:58px; padding-inline:16px; white-space:nowrap }
+.masthead-home.is-sticky { position:fixed; top:0; left:0; right:0; width:100%; z-index:80; box-shadow:0 3px 12px #292b3040 }
+.masthead-home.is-sticky .navrow { background:var(--saffron); box-shadow:none }
+.masthead-home.is-sticky .nav>a,.masthead-home.is-sticky .nav .dropbtn { color:#292b30 }
+.masthead-home.is-sticky .nav .dropbtn span { color:var(--terracotta) }
+.dropdown { z-index:90 }
+.service-row { grid-template-columns:48px 1fr 32px }
+.service-row .glyph { display:grid; width:42px; height:42px; place-items:center; color:inherit; font-size:0 }
+.service-row .glyph img { display:block; width:42px; height:42px; object-fit:contain }
+.pattern-intro .caption,.digital-photo figcaption,.home-gallery .gallery-grid figcaption,.home-gallery>.wrap>.caption { display:none }
+
+@media(max-width:1100px) {
+  .masthead:not(.masthead-home) .brand-lockup { width:min(350px,calc(100vw - 86px)); min-width:0 }
+  .masthead:not(.masthead-home) .menu-toggle { display:block; margin-left:auto; cursor:pointer }
+  .masthead:not(.masthead-home) .navrow { display:none; position:absolute; top:100%; left:0; right:0; width:100%; border-radius:0; background:var(--indigo); box-shadow:0 14px 24px #292b3040 }
+  .masthead:not(.masthead-home) .navrow.open { display:block }
+  .masthead:not(.masthead-home) .nav { width:100%; display:flex; flex-direction:column; align-items:stretch; min-height:0; padding:7px 18px 16px; gap:0 }
+  .masthead:not(.masthead-home) .nav>a,.masthead:not(.masthead-home) .nav .dropbtn { min-height:45px; width:100%; justify-content:space-between; padding:0 12px; color:#ffffff; border-bottom:1px solid #ffffff1c; background:transparent }
+  .masthead:not(.masthead-home) .navitem { display:block }
+  .masthead:not(.masthead-home) .dropdown { position:static; min-width:0; padding:0 0 5px 12px; border:0; box-shadow:none; background:#5c2e1c }
+  .masthead:not(.masthead-home) .dropdown a { color:#fff4dc }
+}
+@media(max-width:768px) {
+  html { scroll-padding-top:94px }
+  .masthead:not(.masthead-home) .brandrow { min-height:78px }
+  .masthead:not(.masthead-home) .brand-lockup,.masthead-home .brand-lockup { width:min(280px,calc(100vw - 86px)); min-width:0 }
+  .service-row { grid-template-columns:42px 1fr 30px; gap:11px }
+  .service-row .glyph,.service-row .glyph img { width:38px; height:38px }
+}
+@media(max-width:360px) {
+  .masthead:not(.masthead-home) .brand-lockup,.masthead-home .brand-lockup { width:min(245px,calc(100vw - 78px)) }
+}

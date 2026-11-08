@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Temple timings clock">
+  <defs><radialGradient id="face"><stop stop-color="#fff7dc"/><stop offset="1" stop-color="#e3b55a"/></radialGradient></defs>
+  <circle cx="48" cy="48" r="36" fill="#a64f3c" stroke="#6e2e1b" stroke-width="3"/><circle cx="48" cy="48" r="30" fill="url(#face)" stroke="#b47a52" stroke-width="3"/>
+  <g stroke="#5a2b1c" stroke-width="2" stroke-linecap="round"><path d="M48 21v4M48 71v4M21 48h4M71 48h4M29 29l3 3M64 64l3 3M67 29l-3 3M32 64l-3 3"/><path d="M48 48 48 31M48 48 62 56" stroke-width="4"/></g><circle cx="48" cy="48" r="4" fill="#a64f3c"/>
+</svg>

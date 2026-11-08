@@ -14,6 +14,10 @@
       "destination": "/public/favicon.svg"
     },
     {
+      "source": "/favicon-48x48.png",
+      "destination": "/public/favicon-48x48.png"
+    },
+    {
       "source": "/favicon-16x16.png",
       "destination": "/public/favicon-16x16.png"
     },

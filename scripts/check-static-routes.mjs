@@ -8,7 +8,8 @@ const failures = [];
 for (const route of routes) {
   const html = await readFile(join(root,route),'utf8');
   if (!html.includes('data-prerendered="true"') || !/<h1\b/.test(html)) failures.push(`${route}: missing pre-rendered content`);
-  if (!/<title>[^<]+<\/title>/.test(html) || !/<meta name="description" content="[^"]+">/.test(html)) failures.push(`${route}: missing title or description`);
+  if (!/<title(?:\s[^>]*)?>[^<]+<\/title>/.test(html) || !/<meta name="description" content="[^"]+"[^>]*>/.test(html)) failures.push(`${route}: missing title or description`);
+  if (!/<html\b[^>]*lang="kn"/.test(html) || !html.includes('data-lang="kn"') || !html.includes('data-lang="en"')) failures.push(`${route}: missing Kannada default or language switch`);
   for (const [,ref] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     if (/^(?:[a-z]+:|\/\/|#)/i.test(ref)) continue;
     const local = decodeURIComponent(ref.split(/[?#]/)[0]);
