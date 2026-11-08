@@ -379,5 +379,16 @@ Object.assign(globalThis.templeTranslations.kn, {
   "Main stone entrance and pillared gateway at Madhukeshwara Temple": "ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ಮುಖ್ಯ ಶಿಲಾ ಪ್ರವೇಶದ್ವಾರ ಮತ್ತು ಸ್ತಂಭದ್ವಾರ",
   "Madhukeshwara Temple and surrounding courtyard at dusk": "ಸಂಜೆ ಹೊತ್ತಿನ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ ಮತ್ತು ಸುತ್ತಲಿನ ಅಂಗಳ",
   "Carved temple tower at Madhukeshwara Temple, Banavasi": "ಬನವಾಸಿಯ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ಕೆತ್ತನೆಯ ಗೋಪುರ",
-  "Wide courtyard view across the Madhukeshwara Temple complex": "ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ವಿಶಾಲ ಅಂಗಳದ ನೋಟ"
+  "Wide courtyard view across the Madhukeshwara Temple complex": "ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ವಿಶಾಲ ಅಂಗಳದ ನೋಟ",
+  "Current darshan hours have not been confirmed.": "ಪ್ರಸ್ತುತ ದರ್ಶನದ ಸಮಯವನ್ನು ದೃಢಪಡಿಸಲಾಗಿಲ್ಲ.",
+  "Temple bell": "ದೇವಸ್ಥಾನದ ಗಂಟೆ",
+  "Offering plate with flowers": "ಹೂವಿನ ಅರ್ಪಣಾ ತಟ್ಟೆ",
+  "Annadana meal": "ಅನ್ನದಾನದ ಪ್ರಸಾದ",
+  "Temple timings clock": "ದೇವಸ್ಥಾನದ ಸಮಯದ ಗಡಿಯಾರ",
+  "Location and travel map pin": "ಸ್ಥಳ ಮತ್ತು ಪ್ರಯಾಣದ ನಕ್ಷೆ",
+  "Temple calendar": "ದೇವಸ್ಥಾನದ ಪಂಚಾಂಗ",
+  "ASI volume on temples in the Kanarese districts": "ಕೆನರೀಸ್ ಜಿಲ್ಲೆಗಳ ದೇವಾಲಯಗಳ ಕುರಿತಾದ ಎಎಸ್‌ಐ ಸಂಪುಟ",
+  "archaeological report on excavations at Banavasi": "ಬನವಾಸಿಯ ಉತ್ಖನನಗಳ ಕುರಿತಾದ ಪುರಾತತ್ವ ವರದಿ",
+  "Open navigation": "ಸಂಚರಣೆಯನ್ನು ತೆರೆಯಿರಿ",
+  "Close navigation": "ಸಂಚರಣೆಯನ್ನು ಮುಚ್ಚಿ"
 });

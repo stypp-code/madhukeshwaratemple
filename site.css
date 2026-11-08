@@ -193,38 +193,52 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible 
   border-radius:3px
 }
 .hero {
-  position:relative;
-  background:var(--indigo);
-  color:white;
-  min-height:590px;
-  overflow:hidden
+  position: relative;
+  width: 100%;
+  height: clamp(520px, 48vw, 700px);
+  min-height: 480px;
+  background: #1a0302;
+  overflow: hidden;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 .hero-slide {
-  position:absolute;
-  inset:0;
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .8s ease;
-  display:flex;
-  align-items:center
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.75s ease-in-out;
 }
 .hero-slide.active {
-  opacity:1;
-  visibility:visible
+  opacity: 1;
+  visibility: visible;
 }
 .hero-slide img {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.58) saturate(.82)
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  filter: none;
+  background: #1a0302;
+  border: none;
+  border-radius: 0;
 }
+.hero-slide::after,
 .hero-slide:after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,#1e2942ed 0%,#1e2942ad 42%,#1e294222 100%)
+  display: none !important;
+  content: none !important;
 }
 .hero-content {
   position:relative;
@@ -677,12 +691,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible 
 }
 body { background:var(--paper); color:var(--ink) }
 .announcement { background:var(--terracotta) }
-.masthead { background:var(--indigo) }
-.navrow { background:var(--indigo-deep); border-top-color:#ffffff26 }
-.nav>a:hover,.nav .dropbtn:hover,.nav a[aria-current=page] { color:var(--saffron); background:#ffffff10 }
-.hero { min-height:clamp(620px,68vw,790px); background:var(--indigo) }
-.hero-slide img { filter:brightness(.58) saturate(.86); object-position:center 52% }
-.hero-slide:after { background:linear-gradient(90deg,#1e2942ed 0%,#1e2942bd 43%,#1e294235 77%,#1e29420a 100%) }
 .hero-content { padding-block:70px 125px }
 .eyebrow,.kicker { color:var(--copper) }
 .hero .eyebrow { color:#e8ba70 }
@@ -723,15 +731,8 @@ body { background:var(--paper); color:var(--ink) }
 
 @media(max-width:900px) {
   .gallery-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px }
-  .hero { min-height:640px }
 }
 @media(max-width:680px) {
-  .navrow { background:var(--indigo-deep) }
-  .dropdown { background:#2c3855 }
-  .dropdown a { color:var(--ivory) }
-  .hero { min-height:650px }
-  .hero-slide img { object-position:58% center }
-  .hero-slide:after { background:linear-gradient(90deg,#1e2942db 0%,#1e2942a8 76%,#1e294268 100%) }
   .hero-content { padding:48px 0 127px }
   .hero h1,.hero h2 { font-size:clamp(38px,11vw,48px); max-width:12ch }
   .hero-controls { left:16px; right:16px; gap:8px }
@@ -1144,32 +1145,6 @@ body { background:var(--paper); color:var(--ink) }
 .dropdown a { font-family:var(--sans); font-size:13px }
 .menu-toggle { border:0; display:none; padding:9px; border-radius:2px }
 .menu-toggle span { display:block; width:25px; height:2px; margin:5px 0; background:var(--ivory) }
-.masthead-home { position:absolute; z-index:10; top:34px; left:0; right:0; width:100%; padding:0; background:transparent; color:white }
-.masthead-home .brandrow { min-height:104px; align-items:flex-start; padding-top:19px }
-.masthead-home .brand-lockup { text-shadow:0 1px 8px #0009 }
-.masthead-home .seal { width:60px; height:60px; border-color:var(--saffron); color:var(--saffron); background:#28345140 }
-.masthead-home .brandkn { font-size:15px; color:#f3c86f }
-.masthead-home .brandname { font-size:20px }
-.masthead-home .brandloc { color:#fff5dc; text-shadow:0 1px 6px #0009 }
-.masthead-home .navrow { display:block; position:absolute; top:18px; right:max(32px,calc((100% - 1360px)/2)); left:auto; width:max-content; border:0; border-radius:10px; background:var(--saffron); box-shadow:0 5px 20px #171d2c25 }
-.masthead-home .nav { width:auto; min-height:58px; margin:0; gap:0 }
-.masthead-home .nav>a,.masthead-home .nav .dropbtn { min-height:58px; padding-inline:21px; color:#292b30; font:600 14px var(--serif); white-space:nowrap }
-.masthead-home .nav>a:hover,.masthead-home .nav .dropbtn:hover,.masthead-home .nav a[aria-current=page] { background:#ffffff30; color:var(--indigo) }
-.masthead-home .nav .dropbtn span { color:var(--terracotta) }
-.masthead-home .navitem:first-of-type .dropdown { right:auto; left:0 }
-.hero { height:clamp(560px,46.75vw,718px); min-height:0; background:var(--indigo); color:white }
-.hero-slides { position:absolute; inset:0 }
-.hero-slide { display:block; inset:0 0 40px; align-items:initial; transition:opacity .7s ease }
-.hero-slide img { filter:none; object-position:center 48% }
-.hero-slide:after { content:none }
-.hero-credit { position:absolute; z-index:1; inset:auto 0 -40px; height:40px; display:flex; align-items:center; padding:0 max(24px,calc((100% - 1360px)/2)); overflow:hidden; background:var(--indigo); color:#f7f4ec; font-size:10px; white-space:nowrap }
-.hero-credit a { color:#f2c66e; text-decoration:underline; text-underline-offset:2px }
-.hero-controls { left:max(24px,calc((100% - 1360px)/2)); bottom:58px; gap:8px }
-.hero-controls button { min-width:36px; min-height:36px; background:#283451c9; border-color:#ffffffb0 }
-.hero-dots { gap:9px }
-.hero-dots button { width:9px; height:9px; min-width:9px; min-height:9px; border-radius:50%; background:#ffffff9c }
-.hero-dots button.active { background:var(--saffron) }
-.hero-pause { padding:0 10px; width:auto; font-size:11px }
 .section { padding-block:clamp(60px,7vw,100px) }
 .intro-grid { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr); gap:40px; align-items:center }
 .photo-frame:before { border-color:var(--copper) }
@@ -1304,8 +1279,6 @@ body { background:var(--paper); color:var(--ink) }
 }
 
 /* Supplied Banavasi heritage artwork: textured surfaces remain behind all copy and cards. */
-.masthead-home .brand-lockup { width:min(420px,calc(100vw - 80px)); padding:0; background:none; text-shadow:none }
-.masthead-home .temple-nameboard { display:block; width:100%; height:auto; object-fit:contain; filter:drop-shadow(0 3px 9px #10182b75) }
 .footer-identity { min-width:0 }
 .footer-nameboard { display:block; width:min(100%,390px); height:auto; object-fit:contain; margin:0 0 19px }
 .pattern-surface {
