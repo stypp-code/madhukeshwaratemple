@@ -2,7 +2,11 @@ globalThis.templeTranslations = {
   kn: {
     "Shri Madhukeshwara Temple": "ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ",
     "Shri Madhukeshwara Temple, Banavasi": "ಬನವಾಸಿಯ ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ",
-    "Shri Madhukeshwara Temple, Banavasi | Official information": "ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ, ಬನವಾಸಿ | ಅಧಿಕೃತ ಮಾಹಿತಿ",
+    "Shri Madhukeshwara Temple, Banavasi | Official information": "ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ, ಬನವಾಸಿ | ಪರಂಪರೆ ಮತ್ತು ಪ್ರವಾಸಿ ಮಾಹಿತಿ",
+    "Shri Madhukeshwara Temple, Banavasi | Heritage & Visitor Information": "ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ, ಬನವಾಸಿ | ಪರಂಪರೆ ಮತ್ತು ಪ್ರವಾಸಿ ಮಾಹಿತಿ",
+    "Heritage & Visitor Information": "ಪರಂಪರೆ ಮತ್ತು ಪ್ರವಾಸಿ ಮಾಹಿತಿ",
+    "Main Shiva Lingam inside Shri Madhukeshwara Temple, Banavasi": "ಬನವಾಸಿಯ ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ಗರ್ಭಗುಡಿಯ ಮುಖ್ಯ ಶಿವಲಿಂಗ",
+    "Genuine Shiva Lingam within the inner sanctum of Shri Madhukeshwara Temple, Banavasi": "ಬನವಾಸಿಯ ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ಗರ್ಭಗುಡಿಯ ಪವಿತ್ರ ಶಿವಲಿಂಗ",
     "Shri Madhukeshwara Temple | Heritage & visitor information": "ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ | ಪರಂಪರೆ ಮತ್ತು ಪ್ರವಾಸಿ ಮಾಹಿತಿ",
     "About the Temple | Shri Madhukeshwara Temple, Banavasi": "ದೇವಸ್ಥಾನದ ಪರಿಚಯ | ಬನವಾಸಿಯ ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ",
     "History of Madhukeshwara Temple | Shri Madhukeshwara Temple, Banavasi": "ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ಇತಿಹಾಸ | ಬನವಾಸಿಯ ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನ",

@@ -1367,62 +1367,501 @@ html[lang="kn"] p,html[lang="kn"] li,html[lang="kn"] .nav a,html[lang="kn"] .nav
 }
 
 /* Final heritage colour and navigation refinements. */
+/* ==========================================================================
+   Priority 1 & 3: Approved White, Terracotta, Maroon & Gold Visual Direction
+   ========================================================================== */
 :root {
-  --indigo:#5c2e1c;
-  --indigo-deep:#3f2015;
-  --ivory:#ffffff;
-  --paper:#ffffff;
+  --maroon: #650b08;
+  --maroon-deep: #460705;
+  --maroon-dark: #2a0403;
+  --terracotta: #a64f3c;
+  --terracotta-dark: #8c3b2a;
+  --gold: #d69a3b;
+  --gold-light: #e5a73b;
+  --gold-bright: #f5c458;
+  --copper: #b47a52;
+  --ivory: #ffffff;
+  --paper: #ffffff;
+  --white: #ffffff;
+  --indigo: #650b08;
+  --indigo-deep: #460705;
 }
-body,.section.ivory,.pattern-surface,.heritage-section,.visit-section,.info-band { background:#ffffff }
-.dropdown,.form input,.form textarea,.service,.heritage-row,.gallery-grid figure,.news-column { background:#ffffff }
-.gallery-grid figure button,.photo-frame img,.event-photo,.page-content figure img { background:#ffffff }
-.gallery-zoom { background:#5c2e1ce8 }
-.gallery-open { background:#3f2015ed }
-.masthead,.masthead-home.is-sticky { background:var(--indigo) }
-.navrow,.dropdown,.masthead-home .navrow,.masthead-home.is-sticky .navrow { background:var(--indigo-deep) }
-.masthead-home .navrow { background:var(--saffron) }
-.masthead-home .nav>a:hover,.masthead-home .nav .dropbtn:hover,.masthead-home .nav a[aria-current=page] { color:var(--indigo-deep) }
-.masthead-home .nav .dropbtn span { color:var(--terracotta) }
-.hero-controls button { background:#3f2015d9 }
-.lingam-slide { background:#3f2015 }
-.lingam-slide img { object-fit:contain; object-position:center; filter:none; background:#3f2015 }
 
-html { scroll-padding-top:120px }
-.masthead:not(.masthead-home) { position:sticky; top:0; z-index:70; box-shadow:0 3px 12px #292b3024 }
-.masthead:not(.masthead-home) .brandrow { min-height:94px }
-.masthead:not(.masthead-home) .brand-lockup { display:block; width:min(390px,32vw); min-width:280px; padding:0 }
-.temple-nameboard { display:block; width:100%; height:auto; object-fit:contain }
-.masthead:not(.masthead-home) .navrow { position:absolute; top:18px; right:max(24px,calc((100% - 1240px)/2)); left:auto; width:auto; border:0; background:transparent; box-shadow:none }
-.masthead:not(.masthead-home) .nav { min-height:58px; width:auto; gap:0 }
-.masthead:not(.masthead-home) .nav>a,.masthead:not(.masthead-home) .nav .dropbtn { min-height:58px; padding-inline:16px; white-space:nowrap }
-.masthead-home.is-sticky { position:fixed; top:0; left:0; right:0; width:100%; z-index:80; box-shadow:0 3px 12px #292b3040 }
-.masthead-home.is-sticky .navrow { background:var(--saffron); box-shadow:none }
-.masthead-home.is-sticky .nav>a,.masthead-home.is-sticky .nav .dropbtn { color:#292b30 }
-.masthead-home.is-sticky .nav .dropbtn span { color:var(--terracotta) }
-.dropdown { z-index:90 }
-.service-row { grid-template-columns:48px 1fr 32px }
-.service-row .glyph { display:grid; width:42px; height:42px; place-items:center; color:inherit; font-size:0 }
-.service-row .glyph img { display:block; width:42px; height:42px; object-fit:contain }
-.pattern-intro .caption,.digital-photo figcaption,.home-gallery .gallery-grid figcaption,.home-gallery>.wrap>.caption { display:none }
+/* Ensure clean white backgrounds across all main surfaces */
+body,
+.section.ivory,
+.pattern-surface,
+.heritage-section,
+.visit-section,
+.info-band,
+.home-services,
+.home-gallery,
+.dropdown,
+.form input,
+.form textarea,
+.service,
+.heritage-row,
+.gallery-grid figure,
+.news-column {
+  background: #ffffff !important;
+}
 
-@media(max-width:1100px) {
-  .masthead:not(.masthead-home) .brand-lockup { width:min(350px,calc(100vw - 86px)); min-width:0 }
-  .masthead:not(.masthead-home) .menu-toggle { display:block; margin-left:auto; cursor:pointer }
-  .masthead:not(.masthead-home) .navrow { display:none; position:absolute; top:100%; left:0; right:0; width:100%; border-radius:0; background:var(--indigo); box-shadow:0 14px 24px #292b3040 }
-  .masthead:not(.masthead-home) .navrow.open { display:block }
-  .masthead:not(.masthead-home) .nav { width:100%; display:flex; flex-direction:column; align-items:stretch; min-height:0; padding:7px 18px 16px; gap:0 }
-  .masthead:not(.masthead-home) .nav>a,.masthead:not(.masthead-home) .nav .dropbtn { min-height:45px; width:100%; justify-content:space-between; padding:0 12px; color:#ffffff; border-bottom:1px solid #ffffff1c; background:transparent }
-  .masthead:not(.masthead-home) .navitem { display:block }
-  .masthead:not(.masthead-home) .dropdown { position:static; min-width:0; padding:0 0 5px 12px; border:0; box-shadow:none; background:#5c2e1c }
-  .masthead:not(.masthead-home) .dropdown a { color:#fff4dc }
+.gallery-grid figure button,
+.photo-frame img,
+.event-photo,
+.page-content figure img {
+  background: #ffffff !important;
 }
-@media(max-width:768px) {
-  html { scroll-padding-top:94px }
-  .masthead:not(.masthead-home) .brandrow { min-height:78px }
-  .masthead:not(.masthead-home) .brand-lockup,.masthead-home .brand-lockup { width:min(280px,calc(100vw - 86px)); min-width:0 }
-  .service-row { grid-template-columns:42px 1fr 30px; gap:11px }
-  .service-row .glyph,.service-row .glyph img { width:38px; height:38px }
+
+/* Subtle temple-pattern background watermark (delicate, never overpowering) */
+.pattern-surface::before {
+  opacity: 0.06 !important;
 }
-@media(max-width:360px) {
-  .masthead:not(.masthead-home) .brand-lockup,.masthead-home .brand-lockup { width:min(245px,calc(100vw - 78px)) }
+.pattern-intro { --pattern-opacity: 0.06; }
+.pattern-services { --pattern-opacity: 0.05; }
+.pattern-heritage { --pattern-opacity: 0.06; }
+main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
+
+/* Remove unwanted blue/navy styling throughout */
+.hero {
+  background: #350604 !important;
+}
+.hero-slide {
+  inset: 0 !important;
+}
+.hero-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  filter: brightness(0.92) contrast(1.02) !important;
+  background: #350604 !important;
+}
+.hero-slide:after {
+  background: linear-gradient(90deg, rgba(38, 5, 4, 0.82) 0%, rgba(38, 5, 4, 0.52) 42%, rgba(38, 5, 4, 0.16) 78%, rgba(38, 5, 4, 0.02) 100%) !important;
+}
+.hero-controls button {
+  background: rgba(50, 4, 3, 0.82) !important;
+  border-color: rgba(245, 196, 88, 0.6) !important;
+  color: #fff !important;
+}
+.hero-controls button:hover {
+  background: var(--gold) !important;
+  color: #320403 !important;
+}
+.hero-controls .hero-dots button.active {
+  background: var(--gold-bright) !important;
+}
+
+/* Digital section: Warm maroon/terracotta theme instead of blue/navy */
+.section.digital-section {
+  background: linear-gradient(135deg, #460705 0%, #2e0403 100%) !important;
+  color: #ffffff !important;
+}
+.digital-copy .kicker {
+  color: var(--gold-bright) !important;
+}
+.digital-links a {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #f7eedb !important;
+  border-color: rgba(214, 154, 59, 0.4) !important;
+}
+.digital-links a:hover {
+  background: var(--gold) !important;
+  color: #320403 !important;
+}
+
+/* Footer: Deep temple maroon with warm gold border */
+.footer {
+  background: #2a0403 !important;
+  color: #f5ece4 !important;
+  border-top: 4px solid var(--gold) !important;
+}
+.footer-nameboard {
+  display: block !important;
+  width: min(260px, 75vw) !important;
+  max-width: 280px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 0 0 16px !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35)) !important;
+}
+.footer a {
+  color: #f0dfc8 !important;
+}
+.footer a:hover {
+  color: var(--gold-bright) !important;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(214, 154, 59, 0.25) !important;
+  color: #d8c2b5 !important;
+}
+
+/* Page hero on interior pages */
+.page-hero {
+  background: linear-gradient(135deg, #4d0907 0%, #320403 100%) !important;
+  border-bottom: 4px solid var(--gold) !important;
+  color: #ffffff !important;
+}
+.page-hero .breadcrumbs {
+  color: #f5dca3 !important;
+}
+.page-hero .breadcrumbs a {
+  color: #fff !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--maroon) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(214, 154, 59, 0.5) !important;
+}
+.btn-primary:hover {
+  background: var(--maroon-deep) !important;
+  box-shadow: 0 4px 14px rgba(70, 7, 5, 0.25) !important;
+}
+
+/* ==========================================================================
+   Priority 4 & Header Redesign: SRS Matha Layout Concept for Shri Madhukeshwara
+   ========================================================================== */
+
+/* Top announcement strip */
+.announcement {
+  background: #3e0604 !important;
+  color: #f7eedb !important;
+  font-size: 13px !important;
+  border-bottom: 1px solid rgba(214, 154, 59, 0.35) !important;
+  position: relative !important;
+  z-index: 1010 !important;
+}
+.announcement-inner {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  min-height: 38px !important;
+  padding: 6px 0 !important;
+  gap: 16px !important;
+}
+.announcement-copy {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 13px !important;
+  color: #f5e4c3 !important;
+  line-height: 1.4 !important;
+}
+.announcement-copy span[aria-hidden="true"] {
+  color: var(--gold-bright) !important;
+  font-size: 10px !important;
+}
+.language-switch {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  flex-shrink: 0 !important;
+}
+.language-switch button {
+  background: transparent !important;
+  border: 0 !important;
+  color: #ecd7b9 !important;
+  cursor: pointer !important;
+  padding: 2px 7px !important;
+  border-radius: 4px !important;
+  font-family: var(--sans) !important;
+  font-size: inherit !important;
+  transition: all 0.2s ease !important;
+}
+.language-switch button[aria-pressed="true"],
+.language-switch button:hover {
+  background: var(--gold) !important;
+  color: #320403 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+.language-switch .lang-divider {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Header & Navigation: Natural page-flow scrolling across all pages */
+.masthead,
+.masthead-home {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  z-index: 100 !important;
+  background: #ffffff !important;
+  border-bottom: 2px solid var(--gold) !important;
+  box-shadow: 0 4px 18px rgba(70, 7, 5, 0.08) !important;
+  padding: 8px 0 !important;
+}
+
+.header-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 20px !important;
+  position: relative !important;
+}
+
+/* Left side — Temple branding */
+.brand-lockup {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex: 0 0 auto !important;
+  width: min(370px, 34vw) !important;
+  max-width: 390px !important;
+  transition: transform 0.2s ease !important;
+}
+.brand-lockup:hover {
+  transform: scale(1.01) !important;
+}
+.temple-nameboard {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 2px 6px rgba(101, 11, 8, 0.12)) !important;
+}
+
+/* Right side — Compact rounded golden navigation container */
+.nav-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex: 0 1 auto !important;
+}
+.golden-nav {
+  display: inline-flex !important;
+  align-items: center !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  background: linear-gradient(135deg, #e5a73b 0%, #d8962c 50%, #c8841a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 16px rgba(70, 7, 5, 0.18), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  padding: 4px 8px !important;
+  gap: 2px !important;
+}
+.golden-nav .navlink,
+.golden-nav .dropbtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 7px 14px !important;
+  color: #380e06 !important;
+  font-family: var(--sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border-radius: 9999px !important;
+  border: 0 !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  transition: all 0.18s ease !important;
+}
+.golden-nav .navlink:hover,
+.golden-nav .dropbtn:hover,
+.golden-nav .navlink[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.38) !important;
+  color: #4a0705 !important;
+}
+.golden-nav .dropbtn .arrow {
+  font-size: 11px !important;
+  transition: transform 0.2s ease !important;
+  display: inline-block !important;
+  color: #4a0705 !important;
+}
+.navitem.open .dropbtn .arrow {
+  transform: rotate(180deg) !important;
+}
+
+/* Dropdown menu */
+.navitem {
+  position: relative !important;
+}
+.navitem .dropdown {
+  display: none !important;
+  position: absolute !important;
+  top: calc(100% + 10px) !important;
+  left: 0 !important;
+  min-width: 230px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(214, 154, 59, 0.45) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 30px rgba(50, 4, 3, 0.18) !important;
+  padding: 8px 0 !important;
+  z-index: 1200 !important;
+}
+.navitem.open .dropdown {
+  display: block !important;
+}
+@media (min-width: 901px) {
+  .navitem:hover .dropdown {
+    display: block !important;
+  }
+  .navitem:hover .dropbtn .arrow {
+    transform: rotate(180deg) !important;
+  }
+}
+.dropdown a {
+  display: block !important;
+  padding: 9px 18px !important;
+  color: #4a150e !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+  border-bottom: 0 !important;
+}
+.dropdown a:hover {
+  background: #fdf7ec !important;
+  color: #650b08 !important;
+  font-weight: 600 !important;
+  padding-left: 22px !important;
+}
+
+/* In-nav language switcher */
+.nav-lang-switch {
+  margin-left: 4px !important;
+  padding-left: 8px !important;
+  border-left: 1px solid rgba(74, 15, 5, 0.25) !important;
+}
+.nav-lang-switch button {
+  color: #380e06 !important;
+  padding: 3px 8px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+}
+.nav-lang-switch button[aria-pressed="true"] {
+  background: #500b09 !important;
+  color: #ffffff !important;
+}
+
+/* Mobile Hamburger Toggle */
+.menu-toggle {
+  display: none !important;
+  background: linear-gradient(135deg, #e5a73b 0%, #c8841a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 8px !important;
+  padding: 8px 10px !important;
+  cursor: pointer !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  margin-left: auto !important;
+}
+.menu-toggle span {
+  display: block !important;
+  width: 22px !important;
+  height: 2.5px !important;
+  background: #340c04 !important;
+  border-radius: 2px !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1040px) {
+  .brand-lockup {
+    width: min(310px, 32vw) !important;
+  }
+  .golden-nav .navlink,
+  .golden-nav .dropbtn {
+    padding: 6px 11px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .masthead,
+  .masthead-home {
+    padding: 7px 0 !important;
+  }
+  .header-row {
+    position: relative !important;
+  }
+  .brand-lockup {
+    width: min(260px, 68vw) !important;
+    max-width: 280px !important;
+  }
+  .temple-nameboard {
+    max-height: 56px !important;
+  }
+  .menu-toggle {
+    display: flex !important;
+  }
+  .nav-container {
+    display: none !important;
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1100 !important;
+  }
+  .nav-container.open {
+    display: block !important;
+  }
+  .golden-nav {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    border-radius: 18px !important;
+    padding: 12px 14px !important;
+    box-shadow: 0 14px 30px rgba(50, 4, 3, 0.28) !important;
+    gap: 4px !important;
+  }
+  .golden-nav .navlink,
+  .golden-nav .dropbtn {
+    width: 100% !important;
+    justify-content: space-between !important;
+    padding: 11px 14px !important;
+    font-size: 15px !important;
+    border-radius: 10px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  .navitem {
+    width: 100% !important;
+  }
+  .navitem .dropdown {
+    position: static !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-radius: 10px !important;
+    margin: 4px 0 8px !important;
+    padding: 4px 0 !important;
+    min-width: 0 !important;
+  }
+  .dropdown a {
+    padding: 10px 18px !important;
+    font-size: 14px !important;
+  }
+  .nav-lang-switch {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    margin: 8px 0 0 !important;
+    padding: 10px 8px 4px !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-lockup {
+    width: min(240px, 66vw) !important;
+  }
+  .temple-nameboard {
+    max-height: 50px !important;
+  }
+  .announcement-copy {
+    font-size: 11px !important;
+  }
 }

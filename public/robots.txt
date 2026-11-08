@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shrimadhukeshwaratemple.vercel.app/sitemap.xml
