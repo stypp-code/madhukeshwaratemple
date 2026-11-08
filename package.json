@@ -1,0 +1,13 @@
+{
+  "name": "shri-madhukeshwara-temple",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official heritage information concept for Shri Madhukeshwara Temple, Banavasi",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-static-routes.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}
+
