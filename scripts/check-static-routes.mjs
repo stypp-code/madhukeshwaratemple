@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const routes = ['index.html','about.html','history.html','deity.html','architecture.html','festivals.html','seva.html','donations.html','annadana.html','news.html','gallery.html','videos.html','panchanga.html','visitor-information.html','contact.html','privacy.html','terms.html','image-credits.html'];
+const routes = ['index.html','about.html','history.html','deity.html','architecture.html','festivals.html','seva.html','donations.html','annadana.html','news.html','gallery.html','videos.html','panchanga.html','visitor-information.html','contact.html','privacy.html','terms.html'];
 const failures = [];
 for (const route of routes) {
   const html = await readFile(join(root,route),'utf8');

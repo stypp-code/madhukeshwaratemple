@@ -1308,23 +1308,89 @@ body { background:var(--paper); color:var(--ink) }
 .masthead-home .temple-nameboard { display:block; width:100%; height:auto; object-fit:contain; filter:drop-shadow(0 3px 9px #10182b75) }
 .footer-identity { min-width:0 }
 .footer-nameboard { display:block; width:min(100%,390px); height:auto; object-fit:contain; margin:0 0 19px }
-.pattern-surface { position:relative; isolation:isolate; background-color:var(--ivory) }
-.pattern-surface::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:var(--heritage-pattern); background-size:var(--pattern-size,920px) auto; background-position:var(--pattern-position,center center); background-repeat:repeat; opacity:var(--pattern-opacity,.26) }
-.pattern-intro { --heritage-pattern:url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); --pattern-position:right 38%; --pattern-size:1000px; --pattern-opacity:.27 }
-.pattern-services { --heritage-pattern:url('/images/temple/backgrounds/navaranga-pillar-details.webp'); --pattern-position:center 42%; --pattern-size:860px; --pattern-opacity:.24 }
-.pattern-heritage { --heritage-pattern:url('/images/temple/backgrounds/lotus-rosette-pattern.webp'); --pattern-position:center center; --pattern-size:760px; --pattern-opacity:.26 }
-main.page-about .page-content { --heritage-pattern:url('/images/temple/backgrounds/navaranga-pillar-details.webp'); --pattern-position:right center; --pattern-size:850px; --pattern-opacity:.26 }
-main.page-history .page-content { --heritage-pattern:url('/images/temple/backgrounds/naga-inscription-and-shrine.webp'); --pattern-position:center center; --pattern-size:980px; --pattern-opacity:.27 }
-main.page-architecture .page-content { --heritage-pattern:url('/images/temple/backgrounds/carved-pillars-and-stone-cot.webp'); --pattern-position:right center; --pattern-size:980px; --pattern-opacity:.27 }
-main.page-festivals .page-content { --heritage-pattern:url('/images/temple/backgrounds/shankha-chakra-festive-ornament.webp'); --pattern-position:center center; --pattern-size:1000px; --pattern-opacity:.23 }
-main.page-deity .page-content { --heritage-pattern:url('/images/temple/backgrounds/nandi-pillared-hall.webp'); --pattern-position:center center; --pattern-size:920px; --pattern-opacity:.26 }
-main.page-news .page-content { --heritage-pattern:url('/images/temple/backgrounds/carved-elephants-and-entrance.webp'); --pattern-position:right center; --pattern-size:940px; --pattern-opacity:.24 }
-main.page-annadana .page-content { --heritage-pattern:url('/images/temple/backgrounds/floral-pillar-capital-ornament.webp'); --pattern-position:center center; --pattern-size:900px; --pattern-opacity:.25 }
-main.page-panchanga .page-content,main.page-gallery .page-content { --heritage-pattern:url('/images/temple/backgrounds/lotus-geometric-ornament.webp'); --pattern-position:center center; --pattern-size:940px; --pattern-opacity:.24 }
-main.page-visitor-information .page-content,main.page-contact .page-content { --heritage-pattern:url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); --pattern-position:right center; --pattern-size:900px; --pattern-opacity:.25 }
-main.page-videos .page-content { --heritage-pattern:url('/images/temple/backgrounds/lotus-rosette-pattern.webp'); --pattern-position:center center; --pattern-size:900px; --pattern-opacity:.24 }
+.pattern-surface {
+  position: relative;
+  isolation: isolate;
+  background-color: #ffffff !important;
+  overflow: hidden;
+}
+.pattern-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--heritage-pattern, url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'));
+  background-size: var(--pattern-size, clamp(520px, 48vw, 860px) auto);
+  background-position: var(--pattern-position, right -40px center);
+  background-repeat: no-repeat;
+  opacity: var(--pattern-opacity, 0.042);
+  filter: grayscale(1) sepia(0.24) brightness(1.06) contrast(1.03);
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse at var(--mask-origin, 80% 50%), rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0) 72%);
+  mask-image: radial-gradient(ellipse at var(--mask-origin, 80% 50%), rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0) 72%);
+}
+.pattern-intro {
+  --heritage-pattern: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp');
+  --pattern-position: right -30px center;
+  --pattern-size: clamp(520px, 46vw, 840px) auto;
+  --mask-origin: 82% 50%;
+  --pattern-opacity: 0.042;
+}
+.pattern-services {
+  --heritage-pattern: url('/images/temple/backgrounds/navaranga-pillar-details.webp');
+  --pattern-position: left -50px center;
+  --pattern-size: clamp(500px, 42vw, 780px) auto;
+  --mask-origin: 20% 50%;
+  --pattern-opacity: 0.038;
+}
+.pattern-heritage {
+  --heritage-pattern: url('/images/temple/backgrounds/lotus-rosette-pattern.webp');
+  --pattern-position: right -20px 38%;
+  --pattern-size: clamp(480px, 44vw, 760px) auto;
+  --mask-origin: 80% 45%;
+  --pattern-opacity: 0.04;
+}
+main[class*="page-"] .page-content::before {
+  background-repeat: no-repeat !important;
+  background-position: var(--pattern-position, right -40px 80px) !important;
+  background-size: var(--pattern-size, clamp(500px, 45vw, 800px) auto) !important;
+  opacity: var(--pattern-opacity, 0.038) !important;
+  -webkit-mask-image: radial-gradient(ellipse at var(--mask-origin, 82% 35%), rgba(0, 0, 0, 0.95) 12%, rgba(0, 0, 0, 0) 70%) !important;
+  mask-image: radial-gradient(ellipse at var(--mask-origin, 82% 35%), rgba(0, 0, 0, 0.95) 12%, rgba(0, 0, 0, 0) 70%) !important;
+}
+main.page-about .page-content { --heritage-pattern: url('/images/temple/backgrounds/navaranga-pillar-details.webp'); }
+main.page-history .page-content { --heritage-pattern: url('/images/temple/backgrounds/naga-inscription-and-shrine.webp'); }
+main.page-architecture .page-content { --heritage-pattern: url('/images/temple/backgrounds/carved-pillars-and-stone-cot.webp'); }
+main.page-festivals .page-content { --heritage-pattern: url('/images/temple/backgrounds/shankha-chakra-festive-ornament.webp'); }
+main.page-deity .page-content { --heritage-pattern: url('/images/temple/backgrounds/nandi-pillared-hall.webp'); }
+main.page-news .page-content { --heritage-pattern: url('/images/temple/backgrounds/carved-elephants-and-entrance.webp'); }
+main.page-annadana .page-content { --heritage-pattern: url('/images/temple/backgrounds/floral-pillar-capital-ornament.webp'); }
+main.page-seva .page-content { --heritage-pattern: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); }
+main.page-donations .page-content { --heritage-pattern: url('/images/temple/backgrounds/stepped-temple-shikhara.webp'); }
+main.page-panchanga .page-content { --heritage-pattern: url('/images/temple/backgrounds/lotus-geometric-ornament.webp'); }
+main.page-visitor-information .page-content { --heritage-pattern: url('/images/temple/backgrounds/carved-elephants-and-entrance.webp'); }
+main.page-contact .page-content { --heritage-pattern: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); }
+main.page-videos .page-content { --heritage-pattern: url('/images/temple/backgrounds/nandi-pillared-hall.webp'); }
+main.page-gallery .page-content { --heritage-pattern: url('/images/temple/backgrounds/carved-pillars-and-stone-cot.webp'); }
+main.page-privacy .page-content { --heritage-pattern: url('/images/temple/backgrounds/lotus-rosette-pattern.webp'); }
+main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'); }
 .footer { position:relative; isolation:isolate }
-.footer::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background-image:url('/images/temple/backgrounds/stepped-temple-shikhara.webp'); background-repeat:repeat; background-size:720px auto; background-position:center; opacity:.045; mix-blend-mode:screen }
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/images/temple/backgrounds/stepped-temple-shikhara.webp');
+  background-repeat: no-repeat;
+  background-size: min(650px, 50vw) auto;
+  background-position: right -30px center;
+  opacity: 0.045;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse at 85% 50%, rgba(0, 0, 0, 0.9) 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 85% 50%, rgba(0, 0, 0, 0.9) 20%, transparent 75%);
+}
 .footer>.wrap { position:relative; z-index:1 }
 @media(max-width:980px) and (min-width:769px) {
   .masthead-home .brand-lockup { width:min(260px,calc(100vw - 620px)) }
@@ -1333,8 +1399,18 @@ main.page-videos .page-content { --heritage-pattern:url('/images/temple/backgrou
   .masthead-home .brandrow { align-items:flex-start }
   .masthead-home .brand-lockup { width:min(280px,calc(100vw - 86px)); flex:none }
   .footer-nameboard { width:min(100%,340px); margin-bottom:16px }
-  .pattern-surface::before { background-size:640px auto; background-position:center top; opacity:var(--pattern-opacity,.24) }
-  .footer::before { background-size:520px auto; background-position:right top; opacity:.035 }
+  .pattern-surface::before {
+    background-size: min(380px, 85vw) auto !important;
+    background-position: center top 24px !important;
+    opacity: 0.032 !important;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.9) 15%, rgba(0, 0, 0, 0) 75%) !important;
+    mask-image: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.9) 15%, rgba(0, 0, 0, 0) 75%) !important;
+  }
+  .footer::before {
+    background-size: min(440px, 80vw) auto !important;
+    background-position: center top !important;
+    opacity: 0.03 !important;
+  }
 }
 @media(max-width:360px) {
   .masthead-home .brand-lockup { width:min(245px,calc(100vw - 78px)) }
@@ -1413,44 +1489,99 @@ body,
   background: #ffffff !important;
 }
 
-/* Subtle temple-pattern background watermark (delicate, never overpowering) */
+/* Subtle temple-pattern background watermark (delicate, authentic stone carvings) */
 .pattern-surface::before {
-  opacity: 0.06 !important;
+  opacity: var(--pattern-opacity, 0.042) !important;
 }
-.pattern-intro { --pattern-opacity: 0.06; }
-.pattern-services { --pattern-opacity: 0.05; }
-.pattern-heritage { --pattern-opacity: 0.06; }
-main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
+.pattern-intro { --pattern-opacity: 0.042 !important; }
+.pattern-services { --pattern-opacity: 0.038 !important; }
+.pattern-heritage { --pattern-opacity: 0.04 !important; }
+main[class*="page-"] .page-content::before { opacity: var(--pattern-opacity, 0.038) !important; }
 
-/* Remove unwanted blue/navy styling throughout */
+/* Hero section: Edge-to-edge prominent presentation with natural daylight colors */
 .hero {
-  background: #350604 !important;
+  position: relative !important;
+  width: 100% !important;
+  height: clamp(520px, 48vw, 700px) !important;
+  min-height: 480px !important;
+  background: #1a0302 !important;
+  overflow: hidden !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.hero-slides {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 .hero-slide {
+  position: absolute !important;
   inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.75s ease-in-out;
+}
+.hero-slide.active {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 .hero-slide img {
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: center !important;
-  filter: brightness(0.92) contrast(1.02) !important;
-  background: #350604 !important;
+  object-position: center 46% !important;
+  filter: none !important;
+  background: #1a0302 !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
+/* Ensure no dark gradient overlay dims or obscures the temple exterior photograph */
+.hero-slide::after,
 .hero-slide:after {
-  background: linear-gradient(90deg, rgba(38, 5, 4, 0.82) 0%, rgba(38, 5, 4, 0.52) 42%, rgba(38, 5, 4, 0.16) 78%, rgba(38, 5, 4, 0.02) 100%) !important;
+  display: none !important;
+  content: none !important;
+}
+.hero-controls {
+  position: absolute !important;
+  z-index: 2 !important;
+  bottom: 24px !important;
+  right: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
 }
 .hero-controls button {
-  background: rgba(50, 4, 3, 0.82) !important;
-  border-color: rgba(245, 196, 88, 0.6) !important;
-  color: #fff !important;
+  background: rgba(45, 6, 4, 0.82) !important;
+  border: 1px solid rgba(245, 196, 88, 0.65) !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(4px) !important;
 }
 .hero-controls button:hover {
   background: var(--gold) !important;
-  color: #320403 !important;
+  color: #2d0604 !important;
+  border-color: var(--gold-bright) !important;
+}
+.hero-controls .hero-dots button {
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: none !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  transition: all 0.25s ease !important;
 }
 .hero-controls .hero-dots button.active {
-  background: var(--gold-bright) !important;
+  background: var(--gold-bright, #ffd57a) !important;
+  transform: scale(1.35) !important;
+  box-shadow: 0 0 8px rgba(245, 196, 88, 0.75) !important;
 }
 
 /* Digital section: Warm maroon/terracotta theme instead of blue/navy */
@@ -1525,14 +1656,16 @@ main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
    Priority 4 & Header Redesign: SRS Matha Layout Concept for Shri Madhukeshwara
    ========================================================================== */
 
-/* Top announcement strip */
+/* Top announcement strip — Fixed / Sticky across the entire website */
 .announcement {
-  background: #3e0604 !important;
-  color: #f7eedb !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background: var(--terracotta, #a64f3c) !important;
+  color: #ffffff !important;
   font-size: 13px !important;
-  border-bottom: 1px solid rgba(214, 154, 59, 0.35) !important;
-  position: relative !important;
-  z-index: 1010 !important;
+  border-bottom: 1px solid rgba(214, 154, 59, 0.45) !important;
+  box-shadow: 0 2px 10px rgba(50, 4, 3, 0.2) !important;
 }
 .announcement-inner {
   display: flex !important;
@@ -1584,7 +1717,7 @@ main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
   color: rgba(255, 255, 255, 0.35) !important;
 }
 
-/* Header & Navigation: Natural page-flow scrolling across all pages */
+/* Temple-inspired Terracotta Header & Natural Scrolling Navigation */
 .masthead,
 .masthead-home {
   position: relative !important;
@@ -1593,9 +1726,9 @@ main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
   right: auto !important;
   width: 100% !important;
   z-index: 100 !important;
-  background: #ffffff !important;
+  background: linear-gradient(180deg, #913c24 0%, #7d2f1a 100%) !important;
   border-bottom: 2px solid var(--gold) !important;
-  box-shadow: 0 4px 18px rgba(70, 7, 5, 0.08) !important;
+  box-shadow: 0 4px 18px rgba(45, 6, 4, 0.16) !important;
   padding: 8px 0 !important;
 }
 
@@ -1854,6 +1987,37 @@ main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
   }
 }
 
+@media (max-width: 900px) {
+  .hero {
+    height: clamp(400px, 50vw, 540px) !important;
+    min-height: 380px !important;
+  }
+  .hero-slide img {
+    object-position: center 46% !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    height: clamp(320px, 52vh, 440px) !important;
+    min-height: 320px !important;
+  }
+  .hero-slide img {
+    object-position: center 44% !important;
+  }
+  .hero-controls {
+    bottom: 14px !important;
+    right: 14px !important;
+    left: auto !important;
+    gap: 6px !important;
+  }
+  .hero-controls button {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    min-height: 34px !important;
+  }
+}
+
 @media (max-width: 480px) {
   .brand-lockup {
     width: min(240px, 66vw) !important;
@@ -1864,4 +2028,14 @@ main[class*="page-"] .page-content::before { opacity: 0.06 !important; }
   .announcement-copy {
     font-size: 11px !important;
   }
+}
+
+/* Ensure no visitor-facing image attribution or source captions appear */
+.hero-credit,
+.gallery-grid figcaption,
+.photo-frame .caption,
+.digital-photo figcaption,
+.caption a,
+.credit-list {
+  display: none !important;
 }

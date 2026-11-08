@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import vm from 'node:vm';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const routeSlugs = ['index','about','history','deity','architecture','festivals','seva','donations','annadana','news','gallery','videos','panchanga','visitor-information','contact','privacy','terms','image-credits'];
+const routeSlugs = ['index','about','history','deity','architecture','festivals','seva','donations','annadana','news','gallery','videos','panchanga','visitor-information','contact','privacy','terms'];
 const source = (await readFile(join(root,'site.js'),'utf8')).replace("document.addEventListener('DOMContentLoaded',init);",'');
 const localeSource = await readFile(join(root,'locales-kn.js'),'utf8');
 const faviconTags = [
@@ -71,9 +71,9 @@ function setLocalizedHead(html, slug) {
   const descriptionKn = dictionary[meta.description] || 'ಬನವಾಸಿಯ ಶ್ರೀ ಮಧುಕೇಶ್ವರ ದೇವಸ್ಥಾನದ ಇತಿಹಾಸ, ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ಪ್ರವಾಸಿ ಮಾಹಿತಿಯನ್ನು ತಿಳಿಯಿರಿ.';
   html = html.replace(/<html\b([^>]*)lang="[^"]*"([^>]*)>/i, '<html$1lang="kn"$2>');
   html = html.replace(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i, `<title data-i18n-en="${escapeAttribute(meta.title)}" data-i18n-kn="${escapeAttribute(titleKn)}">${titleKn}</title>`);
-  html = html.replace(/<meta name="description" content="[^"]*">/i, `<meta name="description" content="${escapeAttribute(descriptionKn)}" data-i18n-content-en="${escapeAttribute(meta.description)}" data-i18n-content-kn="${escapeAttribute(descriptionKn)}">`);
-  html = html.replace(/<meta property="og:title" content="[^"]*">/i, `<meta property="og:title" content="${escapeAttribute(titleKn)}" data-i18n-content-en="${escapeAttribute(meta.title)}" data-i18n-content-kn="${escapeAttribute(titleKn)}">`);
-  html = html.replace(/<meta property="og:description" content="[^"]*">/i, `<meta property="og:description" content="${escapeAttribute(descriptionKn)}" data-i18n-content-en="${escapeAttribute(meta.description)}" data-i18n-content-kn="${escapeAttribute(descriptionKn)}">`);
+  html = html.replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${escapeAttribute(descriptionKn)}" data-i18n-content-en="${escapeAttribute(meta.description)}" data-i18n-content-kn="${escapeAttribute(descriptionKn)}">`);
+  html = html.replace(/<meta property="og:title"[^>]*>/i, `<meta property="og:title" content="${escapeAttribute(titleKn)}" data-i18n-content-en="${escapeAttribute(meta.title)}" data-i18n-content-kn="${escapeAttribute(titleKn)}">`);
+  html = html.replace(/<meta property="og:description"[^>]*>/i, `<meta property="og:description" content="${escapeAttribute(descriptionKn)}" data-i18n-content-en="${escapeAttribute(meta.description)}" data-i18n-content-kn="${escapeAttribute(descriptionKn)}">`);
   html = html.replace('Noto+Serif+Kannada:wght@400;500;600', 'Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Serif+Kannada:wght@400;500;600');
   if (!html.includes('src="locales-kn.js"')) html = html.replace('<script src="site.js" defer></script>', '<script src="locales-kn.js" defer></script><script src="site.js" defer></script>');
   return html;
