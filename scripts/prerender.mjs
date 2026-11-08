@@ -128,7 +128,7 @@ function renderFullPageHtml(slug, markup, meta, titleKn, descKn) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#650b08">
+  <meta name="theme-color" content="#F58213">
   <title data-i18n-en="${escapeAttribute(meta.title)}" data-i18n-kn="${escapeAttribute(titleKn)}">${titleKn}</title>
   <meta name="description" content="${escapeAttribute(descKn)}" data-i18n-content-en="${escapeAttribute(meta.description)}" data-i18n-content-kn="${escapeAttribute(descKn)}">
   <link rel="canonical" href="${canonicalUrl}">

@@ -1,30 +1,49 @@
 /* ==========================================================================
    Shri Madhukeshwara Temple, Banavasi — Official Master Stylesheet
-   Pure white base with temple terracotta, maroon, and gold accents.
-   Architectural watermark background inspired by SRS Matha heritage styling.
+   Rich, vibrant orange & saffron heritage aesthetic inspired by SRS Matha.
+   Coordinated palette:
+     Primary orange:    #F58213
+     Deep saffron:      #E96B0B
+     Golden orange:     #FFAA25
+     Light saffron:     #FFC04A
+     Traditional gold:  #D9A441
+     Dark warm text:    #79220D
+     White:             #FFFFFF
    Single source of truth stylesheet for all 17 routes.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Noto+Serif+Kannada:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 
 :root {
-  --maroon: #650b08;
-  --maroon-deep: #460705;
-  --maroon-dark: #2a0403;
-  --terracotta: #a64f3c;
-  --terracotta-dark: #8c3b2a;
-  --gold: #d69a3b;
-  --gold-light: #e5a73b;
-  --gold-bright: #f5c458;
-  --copper: #b47a52;
-  --ivory: #ffffff;
-  --paper: #ffffff;
-  --white: #ffffff;
-  --ink: #292b30;
-  --ink-soft: #4a4d52;
-  --muted: #696b70;
-  --line: #e8e2d8;
-  --line-light: #f3efe8;
+  /* SRS Matha Inspired Vibrant Orange & Saffron Heritage Palette */
+  --orange-primary: #F58213;
+  --saffron-deep: #E96B0B;
+  --orange-golden: #FFAA25;
+  --saffron-light: #FFC04A;
+  --gold-trad: #D9A441;
+  --dark-warm: #79220D;
+  --dark-warm-deep: #561607;
+  --white: #FFFFFF;
+
+  /* Aliased / Coordinated Variables */
+  --maroon: var(--dark-warm);
+  --maroon-deep: var(--dark-warm-deep);
+  --maroon-dark: var(--dark-warm-deep);
+  --terracotta: var(--saffron-deep);
+  --terracotta-dark: #C45100;
+  --gold: var(--gold-trad);
+  --gold-light: var(--saffron-light);
+  --gold-bright: var(--orange-golden);
+  --copper: #C45100;
+  --ivory: #FFFDF9;
+  --paper: #FFFDF9;
+  --paper-warm: #FFF8EE;
+  --paper-saffron: #FFF2DF;
+  --ink: var(--dark-warm);
+  --ink-soft: #5C190A;
+  --muted: #7A3520;
+  --line: rgba(217, 164, 65, 0.35);
+  --line-light: rgba(255, 170, 37, 0.2);
   --serif: 'Noto Serif Kannada', 'Playfair Display', Georgia, serif;
   --sans: 'DM Sans', 'Noto Serif Kannada', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --max: 1240px;
@@ -41,11 +60,11 @@
 }
 html {
   scroll-behavior: smooth;
-  background: #ffffff;
+  background: var(--paper);
   overflow-x: hidden;
 }
 body {
-  background: #ffffff;
+  background: var(--paper);
   overflow-x: hidden;
   max-width: 100vw;
   color: var(--ink);
@@ -65,7 +84,7 @@ button, a {
   touch-action: manipulation;
 }
 button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--orange-golden);
   outline-offset: 2px;
 }
 .wrap {
@@ -80,11 +99,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--terracotta);
+  background: var(--saffron-deep);
   color: #ffffff;
   font-size: 13px;
-  border-bottom: 1px solid rgba(214, 154, 59, 0.45);
-  box-shadow: 0 2px 10px rgba(50, 4, 3, 0.2);
+  border-bottom: 1px solid var(--orange-golden);
+  box-shadow: 0 2px 10px rgba(121, 34, 13, 0.22);
 }
 .announcement-inner {
   display: flex;
@@ -99,11 +118,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: #f5e4c3;
+  color: #FFF5EA;
   line-height: 1.4;
+  font-weight: 500;
 }
 .announcement-copy span[aria-hidden="true"] {
-  color: var(--gold-bright);
+  color: var(--orange-golden);
   font-size: 10px;
 }
 .language-switch {
@@ -117,7 +137,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .language-switch button {
   background: transparent;
   border: 0;
-  color: #ecd7b9;
+  color: #FFE6C7;
   cursor: pointer;
   padding: 2px 7px;
   border-radius: 4px;
@@ -127,12 +147,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .language-switch button[aria-pressed="true"],
 .language-switch button:hover {
-  background: var(--gold);
-  color: #320403;
+  background: var(--orange-golden);
+  color: var(--dark-warm);
   font-weight: 700;
 }
 .language-switch .lang-divider {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 /* ==========================================================================
@@ -143,9 +163,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   position: relative;
   width: 100%;
   z-index: 100;
-  background: linear-gradient(180deg, #913c24 0%, #7d2f1a 100%);
-  border-bottom: 2px solid var(--gold);
-  box-shadow: 0 4px 18px rgba(45, 6, 4, 0.16);
+  background: linear-gradient(135deg, #F58213 0%, #E96B0B 50%, #C45100 100%);
+  border-bottom: 3px solid var(--gold-trad);
+  box-shadow: 0 4px 18px rgba(121, 34, 13, 0.2);
   padding: 8px 0;
 }
 .header-row {
@@ -173,7 +193,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   height: auto;
   max-height: 80px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(101, 11, 8, 0.12));
+  filter: drop-shadow(0 2px 6px rgba(121, 34, 13, 0.2));
 }
 
 /* Right side — Compact rounded golden navigation container */
@@ -188,10 +208,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
   width: max-content;
   max-width: 100%;
-  background: linear-gradient(135deg, #e5a73b 0%, #d8962c 50%, #c8841a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 50%, #FFAA25 100%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 9999px;
-  box-shadow: 0 4px 16px rgba(70, 7, 5, 0.18), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(121, 34, 13, 0.2), 0 1px 3px rgba(0, 0, 0, 0.08);
   padding: 4px 8px;
   gap: 2px;
 }
@@ -201,10 +221,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
   gap: 5px;
   padding: 7px 14px;
-  color: #380e06;
+  color: var(--dark-warm);
   font-family: var(--sans);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   border-radius: 9999px;
   border: 0;
@@ -217,14 +237,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .golden-nav .navlink:hover,
 .golden-nav .dropbtn:hover,
 .golden-nav .navlink[aria-current="page"] {
-  background: rgba(255, 255, 255, 0.38);
-  color: #4a0705;
+  background: #ffffff;
+  color: var(--saffron-deep);
+  box-shadow: 0 2px 8px rgba(121, 34, 13, 0.12);
 }
 .golden-nav .dropbtn .arrow {
   font-size: 11px;
   transition: transform 0.2s ease;
   display: inline-block;
-  color: #4a0705;
+  color: var(--dark-warm);
 }
 .navitem {
   position: relative;
@@ -239,9 +260,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   left: 0;
   min-width: 230px;
   background: #ffffff;
-  border: 1px solid rgba(214, 154, 59, 0.45);
+  border: 1px solid var(--orange-golden);
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(50, 4, 3, 0.18);
+  box-shadow: 0 12px 30px rgba(121, 34, 13, 0.18);
   padding: 8px 0;
   z-index: 1200;
 }
@@ -259,38 +280,39 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .dropdown a {
   display: block;
   padding: 9px 18px;
-  color: #4a150e;
+  color: var(--dark-warm);
   font-size: 13.5px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.15s ease;
   white-space: nowrap;
 }
 .dropdown a:hover {
-  background: #fdf7ec;
-  color: #650b08;
-  font-weight: 600;
+  background: #FFF5EA;
+  color: var(--saffron-deep);
+  font-weight: 700;
   padding-left: 22px;
 }
 .nav-lang-switch {
   margin-left: 4px;
   padding-left: 8px;
-  border-left: 1px solid rgba(74, 15, 5, 0.25);
+  border-left: 1px solid rgba(121, 34, 13, 0.25);
 }
 .nav-lang-switch button {
-  color: #380e06;
+  color: var(--dark-warm);
   padding: 3px 8px;
   border-radius: 12px;
   font-size: 12px;
+  font-weight: 700;
 }
 .nav-lang-switch button[aria-pressed="true"] {
-  background: #500b09;
+  background: var(--dark-warm);
   color: #ffffff;
 }
 .menu-toggle {
   display: none;
-  background: linear-gradient(135deg, #e5a73b 0%, #c8841a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 100%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 8px;
   padding: 8px 10px;
   cursor: pointer;
@@ -302,7 +324,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   display: block;
   width: 22px;
   height: 2.5px;
-  background: #340c04;
+  background: var(--dark-warm);
   border-radius: 2px;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -315,7 +337,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   width: 100%;
   height: clamp(520px, 48vw, 700px);
   min-height: 480px;
-  background: #1a0302;
+  background: #3B0D03;
   overflow: hidden;
   border: none;
   margin: 0;
@@ -349,7 +371,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   object-fit: cover;
   object-position: center 46%;
   filter: none;
-  background: #1a0302;
+  background: #3B0D03;
   border: none;
   border-radius: 0;
 }
@@ -361,7 +383,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Respectful Pending Slides for Sanctum Shiva Lingam and Festival */
 .hero-slide-pending {
-  background: linear-gradient(135deg, #3d0504 0%, #200201 100%);
+  background: linear-gradient(135deg, #C45100 0%, #8E2B0C 50%, #561607 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,8 +399,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   background-image: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp');
   background-size: cover;
   background-position: center;
-  opacity: 0.08;
-  mix-blend-mode: screen;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
   pointer-events: none;
 }
 .hero-pending-content {
@@ -387,48 +409,51 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   max-width: 680px;
   margin: 0 auto;
   padding: 36px 32px;
-  background: rgba(30, 3, 2, 0.7);
-  border: 1px solid rgba(214, 154, 59, 0.45);
+  background: rgba(121, 34, 13, 0.88);
+  border: 2px solid var(--orange-golden);
   border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 16px 40px rgba(50, 10, 3, 0.6);
   backdrop-filter: blur(8px);
 }
 .hero-pending-badge {
   display: inline-block;
   padding: 5px 14px;
-  background: rgba(214, 154, 59, 0.2);
-  border: 1px solid var(--gold);
+  background: rgba(255, 170, 37, 0.25);
+  border: 1px solid var(--orange-golden);
   border-radius: 9999px;
-  color: var(--gold-bright);
+  color: var(--orange-golden);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.04em;
   margin-bottom: 16px;
 }
 .hero-pending-content h2 {
   font-family: var(--serif);
   font-size: clamp(24px, 4vw, 36px);
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
   margin: 0 0 12px;
   line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 .hero-pending-sub {
   font-size: clamp(14px, 2vw, 17px);
-  color: #f7eedb;
+  color: #FFF5EA;
   margin: 0 0 20px;
   line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 .hero-pending-status {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 170, 37, 0.45);
   border-radius: 8px;
-  color: #e8d0b2;
-  font-size: 13px;
-  font-style: italic;
+  color: #FFE6C7;
+  font-size: 13.5px;
+  font-weight: 500;
 }
 
 /* Hero Controls */
@@ -442,8 +467,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   gap: 10px;
 }
 .hero-controls button {
-  background: rgba(45, 6, 4, 0.82);
-  border: 1px solid rgba(245, 196, 88, 0.65);
+  background: rgba(121, 34, 13, 0.88);
+  border: 1px solid rgba(255, 170, 37, 0.7);
   color: #ffffff;
   border-radius: 4px;
   padding: 8px 14px;
@@ -452,9 +477,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   backdrop-filter: blur(4px);
 }
 .hero-controls button:hover {
-  background: var(--gold);
-  color: #2d0604;
-  border-color: var(--gold-bright);
+  background: var(--orange-primary);
+  color: #ffffff;
+  border-color: #ffffff;
 }
 .hero-controls .prev,
 .hero-controls .next {
@@ -471,7 +496,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   gap: 6px;
 }
 .hero-controls .hero-dots button {
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.5);
   border: none;
   width: 9px;
   height: 9px;
@@ -483,18 +508,18 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   flex: none;
 }
 .hero-controls .hero-dots button.active {
-  background: var(--gold-bright, #ffd57a);
+  background: var(--orange-golden, #FFAA25);
   transform: scale(1.35);
-  box-shadow: 0 0 8px rgba(245, 196, 88, 0.75);
+  box-shadow: 0 0 8px rgba(255, 170, 37, 0.85);
 }
 
 /* ==========================================================================
-   5. Background Architectural Watermark System (SRS Matha Treatment)
+   5. Background Architectural Watermark System (SRS Matha Warm Heritage Style)
    ========================================================================== */
 .pattern-surface {
   position: relative;
   isolation: isolate;
-  background-color: #ffffff;
+  background-color: var(--paper);
   overflow: hidden;
 }
 .pattern-surface::before {
@@ -507,37 +532,38 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   background-size: var(--pattern-size, clamp(520px, 48vw, 860px) auto);
   background-position: var(--pattern-position, right -40px center);
   background-repeat: no-repeat;
-  opacity: var(--pattern-opacity, 0.042);
-  filter: grayscale(1) sepia(0.24) brightness(1.06) contrast(1.03);
+  opacity: var(--pattern-opacity, 0.12);
+  filter: sepia(0.65) saturate(2.2) hue-rotate(-15deg) contrast(1.15) brightness(0.96);
   mix-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(ellipse at var(--mask-origin, 80% 50%), rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0) 72%);
-  mask-image: radial-gradient(ellipse at var(--mask-origin, 80% 50%), rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0) 72%);
+  -webkit-mask-image: radial-gradient(ellipse at var(--mask-origin, 80% 50%), rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0) 75%);
+  mask-image: radial-gradient(ellipse at var(--mask-origin, 80% 50%), rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0) 75%);
 }
 .pattern-intro {
   --heritage-pattern: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp');
   --pattern-position: right -30px center;
   --pattern-size: clamp(520px, 46vw, 840px) auto;
   --mask-origin: 82% 50%;
-  --pattern-opacity: 0.042;
+  --pattern-opacity: 0.12;
 }
 .pattern-services {
   --heritage-pattern: url('/images/temple/backgrounds/navaranga-pillar-details.webp');
   --pattern-position: left -50px center;
   --pattern-size: clamp(500px, 42vw, 780px) auto;
   --mask-origin: 20% 50%;
-  --pattern-opacity: 0.038;
+  --pattern-opacity: 0.11;
 }
 .pattern-heritage {
   --heritage-pattern: url('/images/temple/backgrounds/lotus-rosette-pattern.webp');
   --pattern-position: right -20px 38%;
   --pattern-size: clamp(480px, 44vw, 760px) auto;
   --mask-origin: 80% 45%;
-  --pattern-opacity: 0.04;
+  --pattern-opacity: 0.12;
 }
 
 main[class*="page-"] .page-content {
   position: relative;
   isolation: isolate;
+  background-color: var(--paper);
 }
 main[class*="page-"] .page-content::before {
   content: "";
@@ -545,14 +571,15 @@ main[class*="page-"] .page-content::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  background-image: var(--heritage-pattern, url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp'));
   background-repeat: no-repeat;
   background-position: var(--pattern-position, right -40px 80px);
   background-size: var(--pattern-size, clamp(500px, 45vw, 800px) auto);
-  opacity: var(--pattern-opacity, 0.038);
-  filter: grayscale(1) sepia(0.24) brightness(1.06) contrast(1.03);
+  opacity: var(--pattern-opacity, 0.11);
+  filter: sepia(0.65) saturate(2.2) hue-rotate(-15deg) contrast(1.15) brightness(0.96);
   mix-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(ellipse at var(--mask-origin, 82% 35%), rgba(0, 0, 0, 0.95) 12%, rgba(0, 0, 0, 0) 70%);
-  mask-image: radial-gradient(ellipse at var(--mask-origin, 82% 35%), rgba(0, 0, 0, 0.95) 12%, rgba(0, 0, 0, 0) 70%);
+  -webkit-mask-image: radial-gradient(ellipse at var(--mask-origin, 82% 35%), rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0) 75%);
+  mask-image: radial-gradient(ellipse at var(--mask-origin, 82% 35%), rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0) 75%);
 }
 main.page-about .page-content { --heritage-pattern: url('/images/temple/backgrounds/navaranga-pillar-details.webp'); }
 main.page-history .page-content { --heritage-pattern: url('/images/temple/backgrounds/naga-inscription-and-shrine.webp'); }
@@ -579,23 +606,23 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   position: relative;
 }
 .section.ivory {
-  background: #ffffff;
+  background: var(--paper);
 }
 .kicker {
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--terracotta);
+  color: var(--saffron-deep);
   margin-bottom: 8px;
 }
 .section-title {
   font-family: var(--serif);
   font-size: clamp(28px, 3.5vw, 42px);
-  color: var(--maroon);
+  color: var(--dark-warm);
   line-height: 1.25;
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 700;
 }
 .lead {
   font-size: clamp(17px, 1.4vw, 19px);
@@ -612,33 +639,34 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   gap: 8px;
   padding: 10px 22px;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
   transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
 }
 .btn-primary {
-  background: var(--maroon);
+  background: linear-gradient(135deg, #F58213 0%, #E96B0B 100%);
   color: #ffffff;
-  border: 1px solid rgba(214, 154, 59, 0.5);
+  border: 1px solid var(--orange-golden);
+  box-shadow: 0 4px 14px rgba(233, 107, 11, 0.35);
 }
 .btn-primary:hover {
-  background: var(--maroon-deep);
-  box-shadow: 0 4px 14px rgba(70, 7, 5, 0.25);
+  background: linear-gradient(135deg, #E96B0B 0%, #C45100 100%);
+  box-shadow: 0 4px 16px rgba(196, 81, 0, 0.45);
   color: #ffffff;
 }
 .text-link {
-  color: var(--maroon);
-  font-weight: 600;
+  color: var(--saffron-deep);
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: gap 0.2s ease;
+  transition: gap 0.2s ease, color 0.2s ease;
 }
 .text-link:hover {
   gap: 10px;
-  color: var(--terracotta);
+  color: var(--orange-primary);
 }
 
 /* Homepage Intro Section */
@@ -652,8 +680,8 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 14px 34px rgba(70, 7, 5, 0.14);
-  border: 1px solid rgba(214, 154, 59, 0.35);
+  box-shadow: 0 14px 34px rgba(121, 34, 13, 0.12);
+  border: 1px solid var(--line);
   background: #ffffff;
 }
 .photo-frame img {
@@ -672,7 +700,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 
 /* Homepage Visiting & Information Band */
 .visit-section {
-  background: #ffffff;
+  background: var(--paper-warm);
   border-top: 1px solid var(--line-light);
 }
 .visit-row {
@@ -688,7 +716,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   gap: 14px;
 }
 .info-band {
-  background: #ffffff;
+  background: linear-gradient(90deg, #FFF5EA 0%, #FFFDF9 50%, #FFF5EA 100%);
   border-block: 1px solid var(--line);
   padding: 24px 0;
 }
@@ -701,13 +729,13 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   width: 52px;
   height: 52px;
   border-radius: 10px;
-  background: rgba(166, 79, 60, 0.08);
-  border: 1px solid rgba(166, 79, 60, 0.25);
+  background: rgba(245, 130, 19, 0.12);
+  border: 1px solid rgba(245, 130, 19, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--terracotta);
+  color: var(--orange-primary);
   font-size: 26px;
 }
 .info-icon img,
@@ -719,7 +747,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   display: block;
   font-family: var(--serif);
   font-size: 20px;
-  color: var(--maroon);
+  color: var(--dark-warm);
   margin-bottom: 4px;
 }
 .info-row p {
@@ -735,7 +763,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 
 /* Homepage Services & News Columns */
 .home-services {
-  background: #ffffff;
+  background: var(--paper);
 }
 .service-news {
   display: grid;
@@ -769,16 +797,16 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   border-bottom: 1px solid var(--line);
 }
 .service-row .glyph {
-  color: var(--terracotta);
+  color: var(--orange-primary);
   font-size: 24px;
   text-align: center;
 }
 .service-row h3 {
   margin: 0;
-  color: var(--maroon);
+  color: var(--dark-warm);
   font-family: var(--serif);
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 700;
 }
 .service-row p {
   margin: 3px 0 0;
@@ -791,25 +819,25 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   place-items: center;
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(214, 154, 59, 0.4);
+  border: 1px solid rgba(233, 107, 11, 0.4);
   border-radius: 6px;
-  color: var(--maroon);
+  color: var(--saffron-deep);
   font-size: 16px;
   transition: all 0.2s ease;
 }
 .service-row > a:hover {
-  background: var(--maroon);
+  background: var(--saffron-deep);
   color: #ffffff;
-  border-color: var(--maroon);
+  border-color: var(--saffron-deep);
 }
 
 .news-column {
   padding: 28px 30px;
-  background: #ffffff;
+  background: var(--paper-warm);
   border: 1px solid var(--line);
-  border-top: 3px solid var(--gold);
+  border-top: 3px solid var(--orange-golden);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 16px rgba(121, 34, 13, 0.05);
 }
 .news-list {
   display: grid;
@@ -823,19 +851,19 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   border-bottom: none;
 }
 .news-item time {
-  color: var(--terracotta);
+  color: var(--saffron-deep);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
 }
 .news-item h3 {
   margin: 6px 0;
   font-family: var(--serif);
   font-size: 18px;
   line-height: 1.35;
-  color: var(--maroon);
-  font-weight: 600;
+  color: var(--dark-warm);
+  font-weight: 700;
 }
 .news-item p {
   margin: 0 0 8px;
@@ -846,7 +874,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 
 /* Heritage Cards / Timeline */
 .heritage-section {
-  background: #ffffff;
+  background: var(--paper);
   border-top: 1px solid var(--line-light);
 }
 .heritage-rows {
@@ -856,12 +884,12 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   margin-top: 36px;
 }
 .heritage-row {
-  background: #ffffff;
+  background: var(--paper-warm);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 28px 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-  border-top: 4px solid var(--terracotta);
+  box-shadow: 0 4px 16px rgba(121, 34, 13, 0.05);
+  border-top: 4px solid var(--orange-primary);
 }
 .heritage-row img {
   display: block;
@@ -874,8 +902,9 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 .heritage-row h3 {
   font-family: var(--serif);
   font-size: 20px;
-  color: var(--maroon);
+  color: var(--dark-warm);
   margin-bottom: 10px;
+  font-weight: 700;
 }
 .heritage-row p {
   font-size: 15px;
@@ -883,11 +912,12 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   line-height: 1.6;
 }
 
-/* Digital Section (Warm Maroon & Gold Accent, Replaces Legacy Navy) */
+/* Digital Section (Rich Saffron & Warm Terracotta Heritage Gradient) */
 .section.digital-section,
 .section.indigo {
-  background: linear-gradient(135deg, #460705 0%, #2e0403 100%);
+  background: linear-gradient(135deg, #E96B0B 0%, #C45100 50%, #79220D 100%);
   color: #ffffff;
+  border-block: 1px solid var(--orange-golden);
 }
 .digital-grid {
   display: grid;
@@ -896,13 +926,13 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   align-items: center;
 }
 .digital-copy .kicker {
-  color: var(--gold-bright);
+  color: var(--orange-golden);
 }
 .digital-copy .section-title {
   color: #ffffff;
 }
 .digital-copy p {
-  color: #f7eedb;
+  color: #FFF5EA;
   font-size: 16.5px;
   line-height: 1.7;
   margin-bottom: 24px;
@@ -913,24 +943,24 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   flex-wrap: wrap;
 }
 .digital-links a {
-  background: rgba(255, 255, 255, 0.1);
-  color: #f7eedb;
-  border: 1px solid rgba(214, 154, 59, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid var(--orange-golden);
   padding: 10px 20px;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.2s ease;
 }
 .digital-links a:hover {
-  background: var(--gold);
-  color: #320403;
-  border-color: var(--gold-bright);
+  background: var(--orange-golden);
+  color: var(--dark-warm);
+  border-color: #ffffff;
 }
 .digital-photo {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(214, 154, 59, 0.35);
+  box-shadow: 0 16px 36px rgba(84, 20, 5, 0.35);
+  border: 2px solid var(--orange-golden);
 }
 .digital-photo img {
   display: block;
@@ -943,7 +973,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 /* Gallery Grid */
 .home-gallery,
 .gallery-section {
-  background: #ffffff;
+  background: var(--paper);
   border-top: 1px solid var(--line-light);
 }
 .gallery-grid {
@@ -957,7 +987,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(70, 7, 5, 0.08);
+  box-shadow: 0 4px 14px rgba(121, 34, 13, 0.08);
   border: 1px solid var(--line);
   background: #ffffff;
 }
@@ -988,24 +1018,24 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   height: 32px;
   display: grid;
   place-items: center;
-  background: rgba(101, 11, 8, 0.88);
+  background: rgba(233, 107, 11, 0.92);
   color: #ffffff;
   border-radius: 6px;
   font-size: 18px;
   line-height: 1;
   pointer-events: none;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 .gallery-grid figure:hover .gallery-zoom {
-  background: var(--gold);
-  color: #320403;
+  background: var(--orange-golden);
+  color: var(--dark-warm);
 }
 
 /* Fullscreen Gallery Lightbox Viewer */
 .gallery-open {
   position: fixed;
   inset: 0;
-  background: rgba(26, 3, 2, 0.94);
+  background: rgba(59, 13, 3, 0.94);
   z-index: 2000;
   display: none;
   place-items: center;
@@ -1018,7 +1048,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   max-width: min(100%, 1100px);
   max-height: 85vh;
   object-fit: contain;
-  border: 2px solid rgba(214, 154, 59, 0.5);
+  border: 2px solid var(--orange-golden);
   border-radius: 8px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
@@ -1026,34 +1056,53 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   position: absolute;
   top: 20px;
   right: 24px;
-  background: var(--maroon);
+  background: var(--saffron-deep);
   color: #ffffff;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--orange-golden);
   border-radius: 6px;
   padding: 8px 16px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 .gallery-open button:hover {
-  background: var(--gold);
-  color: #320403;
+  background: var(--orange-golden);
+  color: var(--dark-warm);
 }
 
 /* ==========================================================================
    7. Interior Pages Layout & Styles
    ========================================================================== */
 .page-hero {
-  background: linear-gradient(135deg, #4d0907 0%, #320403 100%);
-  border-bottom: 4px solid var(--gold);
+  background: linear-gradient(135deg, #F58213 0%, #E96B0B 55%, #C45100 100%);
+  border-bottom: 4px solid var(--gold-trad);
   color: #ffffff;
   padding: clamp(36px, 4.5vw, 60px) 0;
+  position: relative;
+  isolation: isolate;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+}
+.page-hero > .wrap {
+  position: relative;
+  z-index: 1;
 }
 .page-hero .breadcrumbs {
   font-size: 13.5px;
-  color: #f5dca3;
+  color: #FFE6C7;
   margin-bottom: 12px;
+  font-weight: 500;
 }
 .page-hero .breadcrumbs a {
   color: #ffffff;
@@ -1061,21 +1110,23 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   text-underline-offset: 3px;
 }
 .page-hero .breadcrumbs a:hover {
-  color: var(--gold-bright);
+  color: var(--orange-golden);
 }
 .page-hero h1 {
   font-family: var(--serif);
   font-size: clamp(28px, 4vw, 44px);
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
   margin-bottom: 10px;
   line-height: 1.25;
+  text-shadow: 0 2px 8px rgba(121, 34, 13, 0.4);
 }
 .page-hero p {
   font-size: clamp(16px, 1.3vw, 18px);
-  color: #f7eedb;
+  color: #FFF5EA;
   max-width: 800px;
   line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(121, 34, 13, 0.3);
 }
 
 .page-content {
@@ -1090,15 +1141,15 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 .page-content h2 {
   font-family: var(--serif);
   font-size: clamp(22px, 2.5vw, 30px);
-  color: var(--maroon);
+  color: var(--dark-warm);
   margin: 36px 0 16px;
-  font-weight: 600;
+  font-weight: 700;
 }
 .page-content figure {
   margin: 28px 0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(70, 7, 5, 0.1);
+  box-shadow: 0 8px 24px rgba(121, 34, 13, 0.1);
   border: 1px solid var(--line);
 }
 .page-content figure img {
@@ -1109,24 +1160,24 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 }
 .timeline {
   margin: 28px 0;
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--orange-golden);
   padding-left: 20px;
 }
 .timeline p {
   margin-bottom: 16px;
 }
 .timeline strong {
-  color: var(--maroon);
+  color: var(--dark-warm);
 }
 .notice {
-  background: #fdf7ec;
-  border: 1px solid rgba(214, 154, 59, 0.4);
-  border-left: 4px solid var(--gold);
+  background: #FFF5EA;
+  border: 1px solid var(--orange-golden);
+  border-left: 4px solid var(--saffron-deep);
   border-radius: 6px;
   padding: 16px 20px;
   margin: 24px 0;
   font-size: 15px;
-  color: #4a150e;
+  color: var(--dark-warm);
 }
 
 /* Forms */
@@ -1148,17 +1199,17 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 }
 .form input:focus,
 .form textarea:focus {
-  border-color: var(--gold);
-  outline: none;
+  border-color: var(--orange-primary);
+  outline: 2px solid var(--orange-golden);
 }
 
 /* ==========================================================================
-   8. Footer (Deep Temple Maroon with Gold Border)
+   8. Footer (Warm Deep Saffron / Terracotta Base with Golden Border)
    ========================================================================== */
 .footer {
-  background: #2a0403;
-  color: #f5ece4;
-  border-top: 4px solid var(--gold);
+  background: linear-gradient(180deg, #79220D 0%, #561607 100%);
+  color: #FFF5EA;
+  border-top: 4px solid var(--orange-golden);
   padding: clamp(48px, 6vw, 72px) 0 32px;
   position: relative;
   isolation: isolate;
@@ -1173,7 +1224,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   background-repeat: no-repeat;
   background-size: min(650px, 50vw) auto;
   background-position: right -30px center;
-  opacity: 0.045;
+  opacity: 0.10;
   mix-blend-mode: screen;
   -webkit-mask-image: radial-gradient(ellipse at 85% 50%, rgba(0, 0, 0, 0.9) 20%, transparent 75%);
   mask-image: radial-gradient(ellipse at 85% 50%, rgba(0, 0, 0, 0.9) 20%, transparent 75%);
@@ -1202,30 +1253,37 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
 }
 .footer-identity p {
   font-size: 14.5px;
-  color: #d8c2b5;
+  color: #FFE6C7;
   line-height: 1.6;
   margin-bottom: 16px;
   max-width: 340px;
 }
+.footer-identity a {
+  color: var(--orange-golden);
+  font-weight: 600;
+}
+.footer-identity a:hover {
+  color: #ffffff;
+}
 .footer h3 {
   font-family: var(--serif);
   font-size: 18px;
-  color: var(--gold-bright);
+  color: var(--orange-golden);
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 700;
 }
 .footer a {
   display: block;
   font-size: 14.5px;
-  color: #f0dfc8;
+  color: #FFE6C7;
   margin-bottom: 10px;
   transition: color 0.15s ease;
 }
 .footer a:hover {
-  color: var(--gold-bright);
+  color: var(--orange-golden);
 }
 .footer-bottom {
-  border-top: 1px solid rgba(214, 154, 59, 0.25);
+  border-top: 1px solid rgba(255, 170, 37, 0.25);
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
@@ -1233,7 +1291,7 @@ main.page-terms .page-content { --heritage-pattern: url('/images/temple/backgrou
   flex-wrap: wrap;
   gap: 12px;
   font-size: 13.5px;
-  color: #d8c2b5;
+  color: #E2C7B8;
 }
 
 /* ==========================================================================
@@ -1284,13 +1342,11 @@ figcaption {
     width: 100%;
     justify-content: space-between;
     gap: 12px;
+    position: relative;
   }
   .masthead,
   .masthead-home {
     padding: 7px 0;
-  }
-  .header-row {
-    position: relative;
   }
   .brand-lockup {
     width: min(260px, 68vw);
@@ -1320,8 +1376,9 @@ figcaption {
     width: 100%;
     border-radius: 18px;
     padding: 12px 14px;
-    box-shadow: 0 14px 30px rgba(50, 4, 3, 0.28);
+    box-shadow: 0 14px 30px rgba(121, 34, 13, 0.28);
     gap: 4px;
+    background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 100%);
   }
   .golden-nav .navlink,
   .golden-nav .dropbtn {
@@ -1330,7 +1387,8 @@ figcaption {
     padding: 11px 14px;
     font-size: 15px;
     border-radius: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(121, 34, 13, 0.15);
+    color: var(--dark-warm);
   }
   .navitem {
     width: 100%;
@@ -1351,7 +1409,7 @@ figcaption {
   }
   .nav-lang-switch {
     border-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(121, 34, 13, 0.2);
     margin: 8px 0 0;
     padding: 10px 8px 4px;
     width: 100%;
