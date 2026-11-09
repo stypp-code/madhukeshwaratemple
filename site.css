@@ -60,6 +60,7 @@
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
   background: var(--paper);
   overflow-x: hidden;
 }
@@ -96,92 +97,68 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
    2. Sticky Announcement Strip (The ONLY sticky element on the website)
    ========================================================================== */
 .announcement {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  position: relative;
+  width: 100%;
+  z-index: 20;
   background: var(--saffron-deep);
   color: #ffffff;
   font-size: 13px;
   border-bottom: 1px solid var(--orange-golden);
-  box-shadow: 0 2px 10px rgba(121, 34, 13, 0.22);
+  box-shadow: 0 2px 8px rgba(121, 34, 13, 0.16);
 }
 .announcement-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   min-height: 38px;
-  padding: 6px 0;
-  gap: 16px;
+  padding: 6px 16px;
+  text-align: center;
 }
 .announcement-copy {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-size: 13px;
   color: #FFF5EA;
   line-height: 1.4;
   font-weight: 500;
+  text-align: center;
 }
 .announcement-copy span[aria-hidden="true"] {
   color: var(--orange-golden);
   font-size: 10px;
 }
-.language-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-.language-switch button {
-  background: transparent;
-  border: 0;
-  color: #FFE6C7;
-  cursor: pointer;
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-family: var(--sans);
-  font-size: inherit;
-  transition: all 0.2s ease;
-}
-.language-switch button[aria-pressed="true"],
-.language-switch button:hover {
-  background: var(--orange-golden);
-  color: var(--dark-warm);
-  font-weight: 700;
-}
-.language-switch .lang-divider {
-  color: rgba(255, 255, 255, 0.45);
-}
 
 /* ==========================================================================
-   3. Masthead Header & Navigation (Natural Scrolling on all 17 routes)
+   3. Masthead Header & Fixed Floating Navigation Pill (srsmatha.org style)
+   The full-width header scrolls away normally.
+   ONLY the pill-shaped menu stays fixed at top center on all pages.
    ========================================================================== */
 .masthead,
 .masthead-home {
   position: relative;
   width: 100%;
-  z-index: 100;
+  z-index: 30;
   background: linear-gradient(135deg, #F58213 0%, #E96B0B 50%, #C45100 100%);
   border-bottom: 3px solid var(--gold-trad);
   box-shadow: 0 4px 18px rgba(121, 34, 13, 0.2);
-  padding: 8px 0;
+  padding: 68px 0 16px 0; /* Space for the floating pill above */
 }
 .header-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
+  text-align: center;
   position: relative;
 }
 .brand-lockup {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
-  flex: 0 0 auto;
-  width: min(370px, 34vw);
-  max-width: 390px;
+  width: min(390px, 84vw);
+  max-width: 420px;
   transition: transform 0.2s ease;
 }
 .brand-lockup:hover {
@@ -196,12 +173,22 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   filter: drop-shadow(0 2px 6px rgba(121, 34, 13, 0.2));
 }
 
-/* Right side — Compact rounded golden navigation container */
+/* Fixed Floating Pill Navigation — Top Center on ALL Pages */
 .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 0 1 auto;
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100; /* Above all page content & sticky side tabs (1000), below modals (2000) */
+  width: max-content;
+  max-width: min(960px, calc(100vw - 32px));
+  margin: 0;
+  padding: 0;
+  pointer-events: none; /* Space outside the pill doesn't block clicks */
+  transition: transform 0.25s ease;
+}
+.nav-mobile-bar {
+  display: none; /* Hidden on desktop */
 }
 .golden-nav {
   display: inline-flex;
@@ -209,12 +196,24 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   width: max-content;
   max-width: 100%;
   background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 50%, #FFAA25 100%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 9999px;
   box-shadow: 0 4px 16px rgba(121, 34, 13, 0.2), 0 1px 3px rgba(0, 0, 0, 0.08);
   padding: 4px 8px;
   gap: 2px;
+  pointer-events: auto;
+  transition: box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
+
+/* After page scrolls past header: stronger shadow & slight backdrop blur */
+.nav-container.is-scrolled .golden-nav {
+  box-shadow: 0 10px 30px rgba(60, 16, 6, 0.35), 0 2px 8px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgba(255, 170, 37, 0.95) 0%, rgba(255, 192, 74, 0.96) 50%, rgba(255, 170, 37, 0.95) 100%);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
 .golden-nav .navlink,
 .golden-nav .dropbtn {
   display: inline-flex;
@@ -236,7 +235,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .golden-nav .navlink:hover,
 .golden-nav .dropbtn:hover,
-.golden-nav .navlink[aria-current="page"] {
+.golden-nav .navlink[aria-current="page"],
+.golden-nav .dropbtn.active-parent,
+.golden-nav .dropbtn[aria-current="page"] {
   background: #ffffff;
   color: var(--saffron-deep);
   box-shadow: 0 2px 8px rgba(121, 34, 13, 0.12);
@@ -265,6 +266,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: 0 12px 30px rgba(121, 34, 13, 0.18);
   padding: 8px 0;
   z-index: 1200;
+  pointer-events: auto;
 }
 .navitem.open .dropdown {
   display: block;
@@ -287,7 +289,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   transition: all 0.15s ease;
   white-space: nowrap;
 }
-.dropdown a:hover {
+.dropdown a:hover,
+.dropdown a[aria-current="page"] {
   background: #FFF5EA;
   color: var(--saffron-deep);
   font-weight: 700;
@@ -297,28 +300,40 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   margin-left: 4px;
   padding-left: 8px;
   border-left: 1px solid rgba(121, 34, 13, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
 }
 .nav-lang-switch button {
   color: var(--dark-warm);
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 12px;
+  padding: 4px 9px;
+  border-radius: 9999px;
+  font-size: 12.5px;
   font-weight: 700;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1.2;
 }
 .nav-lang-switch button[aria-pressed="true"] {
-  background: var(--dark-warm);
+  background: var(--dark-warm); /* Maroon circle button */
   color: #ffffff;
+  box-shadow: 0 2px 6px rgba(121, 34, 13, 0.25);
 }
 .menu-toggle {
   display: none;
-  background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 100%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 8px;
-  padding: 8px 10px;
+  background: transparent;
+  border: 0;
   cursor: pointer;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 4px;
-  margin-left: auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  border-radius: 9999px;
 }
 .menu-toggle span {
   display: block;
@@ -381,79 +396,69 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   content: none;
 }
 
-/* Respectful Pending Slides for Sanctum Shiva Lingam and Festival */
-.hero-slide-pending {
-  background: linear-gradient(135deg, #C45100 0%, #8E2B0C 50%, #561607 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Real Slides Hero Caption & Button */
+.hero-caption {
+  position: absolute;
+  bottom: clamp(36px, 6vw, 68px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: min(680px, calc(100% - 32px));
+  padding: clamp(16px, 2.8vw, 28px) clamp(20px, 3.6vw, 36px);
+  background: rgba(43, 11, 4, 0.78);
+  border: 1.5px solid var(--orange-golden);
+  border-radius: 14px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
   text-align: center;
-  padding: 40px 24px;
-  position: absolute;
-  inset: 0;
+  color: #ffffff;
 }
-.hero-slide-pending::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/images/temple/backgrounds/temple-arches-and-stone-borders.webp');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.18;
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-}
-.hero-pending-content {
-  position: relative;
-  z-index: 1;
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 36px 32px;
-  background: rgba(121, 34, 13, 0.88);
-  border: 2px solid var(--orange-golden);
-  border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(50, 10, 3, 0.6);
-  backdrop-filter: blur(8px);
-}
-.hero-pending-badge {
+.hero-badge {
   display: inline-block;
-  padding: 5px 14px;
+  padding: 4px 12px;
   background: rgba(255, 170, 37, 0.25);
   border: 1px solid var(--orange-golden);
   border-radius: 9999px;
   color: var(--orange-golden);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
-.hero-pending-content h2 {
+.hero-caption h2 {
   font-family: var(--serif);
-  font-size: clamp(24px, 4vw, 36px);
+  font-size: clamp(20px, 3.5vw, 32px);
   font-weight: 700;
   color: #ffffff;
-  margin: 0 0 12px;
-  line-height: 1.3;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  margin: 0 0 6px;
+  line-height: 1.25;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
-.hero-pending-sub {
-  font-size: clamp(14px, 2vw, 17px);
+.hero-caption p {
+  font-size: clamp(13px, 1.8vw, 15px);
   color: #FFF5EA;
-  margin: 0 0 20px;
-  line-height: 1.5;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  margin: 0 0 16px;
+  line-height: 1.45;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
-.hero-pending-status {
+.hero-caption .hero-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 170, 37, 0.45);
-  border-radius: 8px;
-  color: #FFE6C7;
-  font-size: 13.5px;
-  font-weight: 500;
+  justify-content: center;
+  padding: 8px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FFAA25 0%, #E96B0B 100%);
+  color: #2D0C03;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-caption .hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
 /* Hero Controls */
@@ -1719,27 +1724,50 @@ main.page-terms .page-content {
 }
 
 /* Fullscreen Gallery Lightbox Viewer */
-.gallery-open {
-  position: fixed;
-  inset: 0;
-  background: rgba(59, 13, 3, 0.94);
-  z-index: 2000;
-  display: none;
-  place-items: center;
-  padding: 24px;
+.gallery-open[hidden],
+.gallery-open:not(.show) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 .gallery-open.show {
-  display: grid;
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 9, 3, 0.94);
+  z-index: 2000;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.gallery-open-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: min(100%, 1100px);
+  max-height: 90vh;
 }
 .gallery-open img {
-  max-width: min(100%, 1100px);
-  max-height: 85vh;
+  max-width: 100%;
+  max-height: 78vh;
   object-fit: contain;
   border: 2px solid var(--orange-golden);
   border-radius: 8px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
-.gallery-open button {
+.lightbox-caption {
+  margin: 12px 0 0;
+  color: #FFE6C7;
+  font-size: 14.5px;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 800px;
+}
+.gallery-open .gallery-close {
   position: absolute;
   top: 20px;
   right: 24px;
@@ -1752,10 +1780,56 @@ main.page-terms .page-content {
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
+  z-index: 2020;
 }
-.gallery-open button:hover {
+.gallery-open .gallery-close:hover {
   background: var(--orange-golden);
   color: var(--dark-warm);
+}
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(121, 34, 13, 0.85);
+  color: #FFE6C7;
+  border: 1px solid var(--orange-golden);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 2020;
+}
+.lightbox-arrow:hover {
+  background: var(--orange-golden);
+  color: var(--dark-warm);
+  transform: translateY(-50%) scale(1.08);
+}
+.lightbox-prev {
+  left: 20px;
+}
+.lightbox-next {
+  right: 20px;
+}
+@media (max-width: 640px) {
+  .lightbox-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .gallery-open .gallery-close {
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
 }
 
 /* ==========================================================================
@@ -2008,7 +2082,7 @@ figcaption {
    ========================================================================== */
 @media (max-width: 1040px) {
   .brand-lockup {
-    width: min(310px, 32vw);
+    width: min(340px, 60vw);
   }
   .golden-nav .navlink,
   .golden-nav .dropbtn {
@@ -2022,65 +2096,120 @@ figcaption {
 }
 
 @media (max-width: 900px) {
-  .announcement-inner {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 6px;
-    padding: 8px 0;
+  .intro-grid,
+  .digital-grid,
+  .service-news,
+  .visit-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .announcement-copy {
-    justify-content: center;
-    text-align: center;
-    font-size: 12px;
+  .hero {
+    height: clamp(400px, 50vw, 540px);
+    min-height: 380px;
   }
-  .header-row {
-    width: 100%;
-    justify-content: space-between;
-    gap: 12px;
-    position: relative;
+  .hero-slide img {
+    object-position: center 46%;
   }
+}
+
+/* ==========================================================================
+   Mobile Navigation Bar (< 768px): Collapsed Compact Rounded Bar
+   Fixed at top, with temple name/logo on left and hamburger on right.
+   Opens a full-width dropdown panel with same links and language toggle.
+   Tap targets at least 44px.
+   ========================================================================== */
+@media (max-width: 768px) {
   .masthead,
   .masthead-home {
-    padding: 7px 0;
+    padding: 66px 0 14px 0;
   }
   .brand-lockup {
-    width: min(260px, 68vw);
-    max-width: 280px;
+    width: min(280px, 78vw);
   }
   .temple-nameboard {
-    max-height: 56px;
+    max-height: 54px;
+  }
+  .nav-container {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 8px 0 16px;
+    background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 50%, #FFAA25 100%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 9999px;
+    box-shadow: 0 4px 16px rgba(121, 34, 13, 0.22), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.25s ease, background 0.25s ease;
+  }
+  .nav-container.is-scrolled .nav-mobile-bar {
+    box-shadow: 0 10px 28px rgba(60, 16, 6, 0.32), 0 2px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, rgba(255, 170, 37, 0.95) 0%, rgba(255, 192, 74, 0.96) 50%, rgba(255, 170, 37, 0.95) 100%);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+  .nav-mobile-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-warm);
+    font-family: var(--serif);
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 8px;
   }
   .menu-toggle {
     display: flex;
   }
-  .nav-container {
+  .nav-container.open .menu-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-container.open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-container.open .menu-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+  .golden-nav {
     display: none;
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 1100;
-  }
-  .nav-container.open {
-    display: block;
-  }
-  .golden-nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-radius: 18px;
-    padding: 12px 14px;
-    box-shadow: 0 14px 30px rgba(121, 34, 13, 0.28);
-    gap: 4px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background: linear-gradient(135deg, #FFAA25 0%, #FFC04A 100%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    padding: 10px 12px;
+    box-shadow: 0 16px 36px rgba(121, 34, 13, 0.35);
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav-container.open .golden-nav {
+    display: flex;
   }
   .golden-nav .navlink,
   .golden-nav .dropbtn {
     width: 100%;
+    min-height: 44px;
     justify-content: space-between;
-    padding: 11px 14px;
+    padding: 10px 14px;
     font-size: 15px;
     border-radius: 10px;
     border-bottom: 1px solid rgba(121, 34, 13, 0.15);
@@ -2100,7 +2229,10 @@ figcaption {
     min-width: 0;
   }
   .dropdown a {
-    padding: 10px 18px;
+    padding: 12px 18px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
     font-size: 14px;
   }
   .nav-lang-switch {
@@ -2110,20 +2242,22 @@ figcaption {
     padding: 10px 8px 4px;
     width: 100%;
     justify-content: center;
+    gap: 10px;
   }
-  .hero {
-    height: clamp(400px, 50vw, 540px);
-    min-height: 380px;
+  .nav-lang-switch button {
+    min-height: 44px;
+    padding: 8px 18px;
+    font-size: 14px;
   }
-  .hero-slide img {
-    object-position: center 46%;
-  }
-  .intro-grid,
-  .digital-grid,
-  .service-news,
-  .visit-row {
-    grid-template-columns: 1fr;
-    gap: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-container,
+  .golden-nav,
+  .nav-mobile-bar,
+  .golden-nav .dropbtn .arrow,
+  .menu-toggle span {
+    transition: none !important;
   }
 }
 
@@ -2152,16 +2286,27 @@ figcaption {
     max-height: 9px;
     padding: 0;
   }
-  .hero-pending-content {
-    padding: 24px 16px;
+  .hero-caption {
+    width: calc(100% - 24px);
+    bottom: 44px;
+    padding: 12px 14px;
   }
-  .hero-pending-badge {
-    font-size: 11.5px;
-    padding: 4px 10px;
+  .hero-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
   }
-  .hero-pending-status {
+  .hero-caption h2 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .hero-caption p {
     font-size: 12px;
-    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+  .hero-caption .hero-btn {
+    font-size: 12.5px;
+    padding: 6px 16px;
   }
   .footer-grid {
     grid-template-columns: 1fr;

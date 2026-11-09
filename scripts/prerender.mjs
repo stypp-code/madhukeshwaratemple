@@ -15,7 +15,7 @@ vm.runInContext(localeSource, context);
 vm.runInContext(`${source}
 globalThis.renderTempleMarkup = (slug) => {
   const key = slug === 'index' ? 'home' : slug;
-  return header(key === 'home') + (key === 'home' ? home() : pageHtml(key, pages[key])) + footer() + '<div class="gallery-open" role="dialog" aria-modal="true" aria-label="Photograph viewer"><button type="button" aria-label="Close photograph">Close ✕</button><img alt=""></div>';
+  return header(key === 'home', slug) + (key === 'home' ? home() : pageHtml(key, pages[key])) + footer() + '<div class="gallery-open" hidden role="dialog" aria-modal="true" aria-label="Photograph viewer"><button type="button" class="gallery-close" aria-label="Close photograph">Close ✕</button><button type="button" class="lightbox-arrow lightbox-prev" aria-label="Previous photograph">‹</button><div class="gallery-open-content"><img alt=""><p class="lightbox-caption"></p></div><button type="button" class="lightbox-arrow lightbox-next" aria-label="Next photograph">›</button></div>';
 };
 globalThis.getTempleMeta = (slug) => {
   const key = slug === 'index' ? 'home' : slug;
@@ -76,7 +76,7 @@ function translateMarkup(markup) {
 
 // Strict translation validation: detects any untranslated English strings in the output
 function validateTranslations(slug, translatedMarkup) {
-  const allowedExceptions = new Set(['english', 'en', 'close ✕', 'asi', 'upi id', 'ip', 'google maps']);
+  const allowedExceptions = new Set(['english', 'en', 'close ✕', 'asi', 'upi id', 'ip', 'google maps', 'localstorage', '‹', '›']);
   const untranslated = [];
 
   const textMatches = translatedMarkup.match(/>([^<]+)</g) || [];
@@ -85,7 +85,7 @@ function validateTranslations(slug, translatedMarkup) {
     if (/[a-zA-Z]{3,}/.test(t)) {
       if (!t.startsWith('http') && !t.includes('.jpg') && !t.includes('.webp') && !t.includes('.png') && !t.includes('.svg') && !t.includes('©')) {
         const lower = t.toLowerCase();
-        if (!allowedExceptions.has(lower) && !lower.includes('asi') && !lower.includes('upi') && !lower.includes('google maps') && !lower.includes('ip')) {
+        if (!allowedExceptions.has(lower) && !lower.includes('asi') && !lower.includes('upi') && !lower.includes('google maps') && !lower.includes('ip') && !lower.includes('localstorage')) {
           untranslated.push({ type: 'text', text: t });
         }
       }
