@@ -792,27 +792,72 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 /* ==========================================================================
    PART B: Homepage Heritage Zone (index.html only)
    Scoped strictly to <div class="heritage-zone">
-   Cream background with subtle SVG mandala pattern, scroll reveal & sliders
+   Merged Architectural Artwork Backgrounds (Parallax, Mixed Blend, No Edges)
    ========================================================================== */
 .heritage-zone {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  background-color: #FAF6EE;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(245, 130, 19, 0.07) 0%, transparent 65%),
-    radial-gradient(circle at 50% 100%, rgba(201, 162, 39, 0.08) 0%, transparent 65%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23c9a227' stroke-width='0.7' stroke-opacity='0.16'%3E%3Ccircle cx='40' cy='40' r='32'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3Cpath d='M40 0 v80 M0 40 h80 M12 12 l56 56 M12 68 l56 -56'/%3E%3Cpath d='M40 16 C48 28 52 32 64 40 C52 48 48 52 40 64 C32 52 28 48 16 40 C28 32 32 28 40 16 Z'/%3E%3Cpolygon points='40,24 51,33 56,40 51,47 40,56 29,47 24,40 29,33'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat, no-repeat, repeat;
-  background-position: center top, center bottom, center top;
-  background-size: 100% 600px, 100% 600px, 80px 80px;
-  border-top: 1px solid rgba(201, 162, 39, 0.35);
-  border-bottom: 1px solid rgba(201, 162, 39, 0.35);
+  background-color: #fff8ec; /* 1. Solid cream #fff8ec base on the whole zone */
+  clip-path: inset(0); /* 4. Parallax clipping container for fixed pattern layers */
+  -webkit-clip-path: inset(0);
 }
+
+/* 4. Position: fixed canvas inside the zone with clip-path: inset(0) */
+.heritage-parallax-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #fff8ec; /* Base cream color prevents flashing while loading */
+}
+
+/* 1 & 2 & 3. Pattern layers with mix-blend-mode: multiply, opacity 0.35-0.6, no hard edges */
+.heritage-pattern-layer {
+  position: absolute;
+  inset: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 0.75s ease-in-out;
+  will-change: opacity;
+  /* 2 & 3. Fade top and bottom with linear mask; fade all four edges with radial mask */
+  -webkit-mask-image: 
+    radial-gradient(ellipse 85% 80% at 50% 50%, #000 35%, rgba(0, 0, 0, 0.75) 65%, transparent 95%),
+    linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  mask-image: 
+    radial-gradient(ellipse 85% 80% at 50% 50%, #000 35%, rgba(0, 0, 0, 0.75) 65%, transparent 95%),
+    linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
+}
+
+.heritage-pattern-layer.layer-arches {
+  background-image: url('/images/backgrounds/bg-arches-pillars.webp');
+}
+.heritage-pattern-layer.layer-gallery {
+  background-image: url('/images/backgrounds/bg-lotus-geometric.webp');
+}
+.heritage-pattern-layer.layer-visit {
+  background-image: url('/images/backgrounds/bg-rosette-soft.webp');
+}
+
+.heritage-pattern-layer.is-active {
+  opacity: 0.45; /* In the 0.35 to 0.6 range for gentle printed linework */
+}
+
+/* 8. Respect prefers-reduced-motion: static blended background, no cross-fade */
+@media (prefers-reduced-motion: reduce) {
+  .heritage-pattern-layer {
+    transition: none !important;
+  }
+}
+
 .heritage-zone .section,
 .heritage-zone .heritage-section,
 .heritage-zone .home-gallery,
 .heritage-zone .visit-section {
+  position: relative;
+  z-index: 1;
   background: transparent;
   border-top: none;
   box-shadow: none;
@@ -896,11 +941,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   min-width: calc((100% - 32px) / 2.3);
   scroll-snap-align: start;
   scroll-snap-stop: normal;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(201, 162, 39, 0.28);
   border-radius: 14px;
   padding: 0;
-  box-shadow: 0 6px 20px rgba(107, 30, 30, 0.08);
+  box-shadow: 0 8px 24px rgba(107, 30, 30, 0.08);
   border-top: 4px solid #f58213;
   overflow: hidden;
   display: flex;
@@ -986,7 +1033,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(107, 30, 30, 0.08);
   border: 1px solid rgba(201, 162, 39, 0.25);
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .heritage-zone .gallery-grid figure:hover {
@@ -1050,7 +1099,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Visit Section inside Heritage Zone */
 .heritage-zone .visit-row {
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(201, 162, 39, 0.35);
   border-top: 4px solid #f58213;
   border-radius: 16px;
