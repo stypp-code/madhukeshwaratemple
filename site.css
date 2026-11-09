@@ -553,23 +553,74 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   --pattern-size: 460px auto;
   --pattern-opacity: 0.52;
 }
-.pattern-heritage {
-  --heritage-pattern: url('/images/temple/backgrounds/lotus-rosette-pattern.webp');
-  --pattern-position: center top;
-  --pattern-size: 480px auto;
-  --pattern-opacity: 0.55;
+/* Homepage Continuous Heritage Continuum (SRS Matha Multi-Section Effect)
+   Spans seamlessly from: Heritage in stone (ಶಿಲೆಯಲ್ಲಿ ಅರಳಿದ ಪರಂಪರೆ)
+   Through:              Temple Gallery (ದೇವಸ್ಥಾನದ ಛಾಯಾಚಿತ್ರ ಸಂಗ್ರಹ)
+   To:                   Plan a visit (ಬನವಾಸಿ ಪ್ರವಾಸ ಯೋಜಿಸಿ) */
+.heritage-continuum {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--paper-warm);
+  overflow: hidden;
 }
-.pattern-gallery {
-  --heritage-pattern: url('/images/temple/backgrounds/lotus-geometric-ornament.webp');
-  --pattern-position: center top;
-  --pattern-size: 440px auto;
-  --pattern-opacity: 0.50;
+.heritage-continuum::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url('/images/temple/backgrounds/lotus-rosette-pattern.webp');
+  background-repeat: repeat;
+  background-size: 520px auto;
+  background-position: center top;
+  opacity: 0.44;
+  filter: sepia(0.35) saturate(1.8) hue-rotate(-12deg) contrast(1.35) brightness(0.95);
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 28px, rgba(0, 0, 0, 1) 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 28px, rgba(0, 0, 0, 1) 100%);
 }
-.pattern-visit {
-  --heritage-pattern: url('/images/temple/backgrounds/carved-elephants-and-entrance.webp');
-  --pattern-position: center top;
-  --pattern-size: 500px auto;
-  --pattern-opacity: 0.55;
+.heritage-continuum::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: 
+    url('/images/temple/backgrounds/navaranga-pillar-details.webp'),
+    url('/images/temple/backgrounds/navaranga-pillar-details.webp');
+  background-position:
+    left -40px top,
+    right -40px top;
+  background-repeat:
+    repeat-y,
+    repeat-y;
+  background-size:
+    360px auto,
+    360px auto;
+  opacity: 0.38;
+  filter: sepia(0.35) saturate(1.8) hue-rotate(-12deg) contrast(1.35) brightness(0.95);
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 28px, rgba(0, 0, 0, 1) 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 28px, rgba(0, 0, 0, 1) 100%);
+}
+.heritage-continuum .section,
+.heritage-continuum .home-gallery,
+.heritage-continuum .visit-section,
+.heritage-continuum .heritage-section {
+  background: transparent;
+  border-top: none;
+}
+.heritage-continuum .pattern-surface::before {
+  display: none;
+}
+@media (max-width: 900px) {
+  .heritage-continuum::after {
+    display: none;
+  }
+  .heritage-continuum::before {
+    background-size: 340px auto;
+    opacity: 0.38;
+  }
 }
 
 /* Interior Pages Content Pattern Backgrounds */
